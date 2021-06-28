@@ -97,9 +97,9 @@ const ProductList = () => {
                   to={`/products/${id}`}
                   className='add-cart'
                   style={{
-                    color: '#17252A',
+                    color: 'var(--primaryColor)',
                     background: '#fff',
-                    border: '2px solid #17252A',
+                    border: '2px solid var(--primaryColor)',
                   }}
                 >
                   {/*className="prod-details">*/}

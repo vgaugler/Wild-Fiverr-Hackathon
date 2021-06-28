@@ -27,7 +27,7 @@ a {
   flex-direction: column;
 }
 .links a:hover {
-  border-color: #3aafa9;
+  border-color: var(--primaryColor);
 }
 .links a {
   border-bottom: 2px solid transparent;
@@ -48,7 +48,7 @@ a {
 .login {
   font-weight: bold;
   color: #fff;
-  background-color: #1dbf73;
+  background-color: var(--primaryColor);
   border: none;
   cursor: pointer;
   display: flex;
@@ -59,9 +59,9 @@ a {
 }
 
 .login:hover {
-  color: #00732e;
+  color: var(--primaryColor);
   background-color: transparent;
-  border-color: #3aafa9;
+  border-color: var(--primaryColor);
 }
 .cart-icon:hover {
   filter: brightness(150%);
@@ -86,7 +86,7 @@ nav svg {
   width: 1.62rem;
   height: 1.62rem;
   border-radius: 50%;
-  background-color: #3aafa9;
+  background-color: var(--primaryColor);
   display: flex;
   align-items: center;
   justify-content: center;
