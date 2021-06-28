@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Spinner from "./components/Spinner/Spinner";
+import SingleProduct from "./pages/SingleProduct/SingleProduct";
 
 const Cart = lazy(() => import("./pages/CartContent/CartItems"));
 const Homepage = lazy(() => import("./pages/Home/Home"));
@@ -22,9 +23,7 @@ export default function App() {
           <Route exact path="/products" component={Productlist}></Route>
           <Route
             exact
-            path="/products/:id"
-            children={<ProductDetails />}
-          ></Route>
+            path="/products/:id" component={SingleProduct}/>
           <Route exact path="*" component={Errorpage}></Route>
         </Switch>
       </Suspense>

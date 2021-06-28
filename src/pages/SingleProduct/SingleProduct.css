@@ -22,6 +22,12 @@ span {
 .review {
   color: orange;
 }
+.title_name {
+  display: flex;
+}
+.prod-photo {
+ height: 40em;
+}
 @media (min-width: 992px) {
   .product-center {
     grid-template-columns: 1fr 1fr;
