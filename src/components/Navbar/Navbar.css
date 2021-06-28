@@ -111,7 +111,7 @@ nav svg {
     align-items: center;
   }
   .links a:hover {
-    border-color: #3aafa9;
+    border-color: var(--primaryColor);
   }
   .links a {
     border-bottom: 2px solid transparent;
@@ -127,7 +127,7 @@ nav svg {
   .login {
     font-weight: bold;
     color: #fff;
-    background-color: #3aafa9;
+    background-color: var(--primaryColor);
     border: none;
     cursor: pointer;
     display: flex;
