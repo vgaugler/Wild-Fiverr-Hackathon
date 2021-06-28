@@ -16,9 +16,26 @@
 }
 
 :root {
-  --primaryLightColor: #d4e6a5;
-  --primaryColor: #476a2e;
-  --primaryDarkColor: #c02c03;
+  --primaryColor: #1dbf73;
+  --primaryLightColor: #d0f7e6;
+  --primaryMediumColor: #00732e;
+  --primaryDarkColor: #003912;
+
+  --yellowColor: #d0e500;
+  --yellowLightColor: #f1f4cb;
+  --yellowMediumColor: #687200;
+  --yellowDarkColor: #254200;
+
+  --pinkLightColor: #ffd3e2;
+  --pinkMediumColor: #be5272;
+  --pinkColor: #ff80ae;
+  --pinkDarkColor: #4d1727;
+
+  --orangeColor: #ff7640;
+  --orangeLightColor: #ffe0d4;
+  --orangeMediumColor: #8f2900;
+  --orangeDarkColor: #421300;
+
   --mainWhite: #fff;
   --offWhite: #f7f7f7;
   --mainBackground: #f1f5f8;
@@ -47,8 +64,19 @@ Global Styles
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'Domaine';
+  src: local('Domaine'),
+    url('./fonts/domaine-display-web-medium-italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Macan';
+  src: local('Macan'), url('./fonts/Macan-Regular.woff') format('woff');
+}
+
 body {
-  font-family: 'Macan', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Macan';
   color: var(--mainBlack);
   background: var(--mainBackground);
   line-height: 1.4;
@@ -141,7 +169,7 @@ Error
 
 .add-cart {
   color: #fff;
-  background: #17252a;
+  background: var(--primaryColor);
   padding: 10px;
   margin-bottom: 10px;
   text-align: center;
@@ -282,7 +310,7 @@ Cocktail
   margin-right: 0.5rem;
 }
 .drink-data {
-  background: var(--primaryLightColor);
+  background: var(--primaryColor);
   padding: 0.25rem 0.5rem;
   border-radius: var(--mainBorderRadius);
   color: var(--primaryColor);
@@ -374,7 +402,7 @@ Cocktail
   background: transparent;
   border-color: transparent;
   padding: 0.25rem 0.5rem;
-  background: #3aafa9;
+  background: var(--primaryColor);
   color: var(--clr-white);
   border-radius: var(--radius);
   font-weight: 400;
@@ -393,7 +421,7 @@ Cocktail
 .cart-total-checkout h3 {
   margin-bottom: 10px;
   text-transform: uppercase;
-  color: #3aafa9;
+  color: var(--primaryColor);
 }
 .cart-total-checkout span {
   color: #444;

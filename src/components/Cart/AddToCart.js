@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useGlobalContext } from "../../context/cart_context";
-import AmountButtons from "../AmountButtons/AmountButtons";
-import "./Cart.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useGlobalContext } from '../../context/cart_context';
+import AmountButtons from '../AmountButtons/AmountButtons';
+import './Cart.css';
 
-const AddToCart = React.memo(function AddToCart ({ product }) {
+const AddToCart = React.memo(function AddToCart({ product }) {
   const { addToCart } = useGlobalContext();
   const { id, stock } = product;
 
@@ -30,17 +30,17 @@ const AddToCart = React.memo(function AddToCart ({ product }) {
   };
 
   return (
-    <div className="btn-container">
+    <div className='btn-container'>
       <AmountButtons amount={amount} inc={increase} dec={decrease} />
       <Link
-        to="/cart"
-        className="add-cart"
+        to='/cart'
+        className='add-cart'
         onClick={() => addToCart(id, amount, product)}
       >
         Add to cart
       </Link>
     </div>
   );
-})
+});
 
 export default AddToCart;

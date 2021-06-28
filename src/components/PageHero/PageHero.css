@@ -1,6 +1,6 @@
 .heading-center {
   color: #fff;
-  background-color: #3aafa9;
+  background-color: var(--primaryColor);
   min-height: 10vh;
   width: 90vvw;
   display: flex;
