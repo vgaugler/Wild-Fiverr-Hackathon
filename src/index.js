@@ -5,6 +5,7 @@ import App from "./App";
 import { CartProvider } from "./context/cart_context";
 import { ProductsProvider } from "./context/products_context";
 import { UserProvider } from "./context/user_context";
+import './App.css';
 
 ReactDOM.render(
   <Auth0Provider
