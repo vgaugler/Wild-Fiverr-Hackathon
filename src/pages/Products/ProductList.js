@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useProductsContext } from "../../context/products_context";
-import AddToCart from "../../components/Cart/AddToCart";
-import PageHero from "../../components/PageHero/PageHero";
-import "../../App.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useProductsContext } from '../../context/products_context';
+import AddToCart from '../../components/Cart/AddToCart';
+import PageHero from '../../components/PageHero/PageHero';
+import '../../App.css';
 
 const ProductList = () => {
   const { products } = useProductsContext();
@@ -29,9 +29,9 @@ const ProductList = () => {
                   to={`/products/${id}`}
                   className="add-cart"
                   style={{
-                    color: "#17252A",
-                    background: "#fff",
-                    border: "2px solid #17252A",
+                    color: 'var(--primaryColor)',
+                    background: '#fff',
+                    border: '2px solid var(--primaryColor)',
                   }}
                 >
                   {/*className="prod-details">*/}
