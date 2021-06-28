@@ -4,7 +4,9 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Domaine', 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--mainBlack);
+  background: var(--mainBackground);
 }
 
 ul {
