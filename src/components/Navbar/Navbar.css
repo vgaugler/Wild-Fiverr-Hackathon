@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 ul {
@@ -48,7 +48,7 @@ a {
 .login {
   font-weight: bold;
   color: #fff;
-  background-color: #3aafa9;
+  background-color: #1dbf73;
   border: none;
   cursor: pointer;
   display: flex;
@@ -59,7 +59,7 @@ a {
 }
 
 .login:hover {
-  color: #3aafa9;
+  color: #00732e;
   background-color: transparent;
   border-color: #3aafa9;
 }
@@ -139,7 +139,7 @@ nav svg {
 }
 
 @media only screen and (max-width: 767px) and (min-width: 350px) {
-  .links a:focus{
-    border:none;
+  .links a:focus {
+    border: none;
   }
 }
