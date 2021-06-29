@@ -1,4 +1,14 @@
 .barSearch{
   display: flex;
-  justify-content: center;
+  justify-content:space-around;
+  align-items: center;
+}
+
+.searchMentor {
+  border-radius: 30px;
+  height: 3em;
+  width: 30em;
+  background-color: #1DBF73;
+  color: white;
+  margin-bottom: 2em;
 }
