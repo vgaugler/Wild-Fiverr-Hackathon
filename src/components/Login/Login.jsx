@@ -40,13 +40,13 @@ function Login() {
     <div className={loginStatus2 ? 'BoxLog2 Active' : 'BoxLog2'}>
       {isSignedIn ? (
         <div>
-          <h2 className='titleBoxLog'>
+          <h2 className="titleBoxLog">
             Bonjour {firebase.auth().currentUser.displayName}
           </h2>
           <img
             src={firebase.auth().currentUser.photoURL}
-            alt=''
-            className='photoProfil'
+            alt=""
+            className="photoProfil"
           />
         </div>
       ) : (
@@ -62,10 +62,10 @@ function Login() {
       )}
       <div>
         {' '}
-        <img src={Logo} alt='' className='logoLog' />
+        <img src={Logo} alt="" className="logoLog" />
       </div>
       <div
-        className='closeBoxLog'
+        className="closeBoxLog"
         style={{ cursor: 'pointer' }}
         onClick={() => {
           updateLoginStatus2(false);
