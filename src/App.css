@@ -213,9 +213,7 @@ Error
   padding: 5px;
   justify-content: center;
 }
-.cocktail:hover {
-  box-shadow: var(--darkShadow);
-}
+
 .cocktail img {
   height: 20rem;
   object-fit: cover;

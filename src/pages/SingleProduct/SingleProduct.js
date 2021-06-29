@@ -6,25 +6,42 @@ import './SingleProduct.css';
 const SingleProduct = (props) => {
   const [product, setProduct] = useState({});
   const id = props.match.params.id;
+  const { mentorAttribut } = props.location.mentorProps;
   const [language, setLanguage] = useState([]);
   const [availabel, setAvailabel] = useState(3);
   const [skills, setSkills] = useState([]);
+  const [name, setName] = useState();
   useEffect(() => {
     const mentor = firebase.database().ref('user').child(`${id}`);
 
     mentor.on('value', (snapshot) => {
       setProduct(snapshot.val());
-      console.log(product);
+
       setLanguage(snapshot.val().language);
-      console.log(language);
+
       setSkills(snapshot.val().skill);
+      setName(snapshot.val().name);
       // setAvailabel(snapshot.val().disponibility);
+      console.log(mentorAttribut);
     });
   }, []);
 
   function choose() {
     let count = availabel - 1;
     setAvailabel(count);
+    const mentor = {
+      name: name,
+      id: `${id}`,
+      skill: skills,
+      language: language,
+    };
+
+    firebase
+      .database()
+      .ref('mentor')
+      .child(firebase.auth().currentUser.uid)
+      .child(`${id}`)
+      .set(mentor);
   }
 
   return (

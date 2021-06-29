@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageHero from '../PageHero/PageHero';
+import './MentorCard.css';
 
 const MentorCard = ({ mentorList }) => {
   return (
     <>
       <PageHero />
-      <div className="cocktails-center">
+      <div className='cocktails-center'>
         {mentorList.map((product) => {
           const { id, image, name, activity, language, skill } = product;
           return (
             <article
               key={id}
-              className="cocktail"
+              className='cocktail'
               style={{ position: 'relative' }}
             >
-              <div className="img-container">
+              <div className='img-container'>
                 <img src={image} alt={name} />
               </div>
-              <div className="cocktail-footer">
-                <div className="product">
+              <div className='cocktail-footer'>
+                <div className='product'>
                   <h4>{name}</h4>
-                  <h4 className="price">{activity}</h4>
+                  <h4 className='price'>{activity}</h4>
                 </div>
                 <div
                   style={{
@@ -34,9 +35,9 @@ const MentorCard = ({ mentorList }) => {
                 >
                   {language.map((m) => (
                     <div
-                      className="tag"
+                      className='tag'
                       style={{
-                        backgroundColor: 'var(--primaryColor)',
+                        backgroundColor: '#1dbf7361',
                         color: 'white',
                         padding: '10px',
                         marginRight: '10px',
@@ -59,7 +60,7 @@ const MentorCard = ({ mentorList }) => {
                 >
                   {skill.map((m) => (
                     <div
-                      className="tag2"
+                      className='tag2'
                       style={{
                         border: '1px solid hsla(0, 0%, 46.7%, 0.65)',
                         color: 'var(--primaryDarkColor)',
@@ -76,13 +77,19 @@ const MentorCard = ({ mentorList }) => {
                   ))}
                 </div>
                 <Link
-                  to={`/products/${id}`}
-                  className="add-cart"
-                  style={{
-                    color: 'var(--primaryColor)',
-                    background: '#fff',
-                    border: '2px solid var(--primaryColor)',
+                  to={{
+                    pathname: `/products/${id}`,
+                    mentorProps: {
+                      id: product.id,
+                      name: product.name,
+                    },
                   }}
+                  className='add-cart'
+                  // style={{
+                  //   color: 'var(--primaryColor)',
+                  //   background: '#fff',
+                  //   border: '2px solid var(--primaryColor)',
+                  // }}
                 >
                   {/*className="prod-details">*/}
                   View
