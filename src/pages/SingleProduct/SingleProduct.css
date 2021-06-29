@@ -53,6 +53,10 @@ span {
   background: transparent;
   border: 2px solid var(--primaryColor);
 }
+.tag:hover {
+  background-color: #1dbf734f;
+  color: var(--primaryDarkColor);
+}
 @media (min-width: 992px) {
   .product-center {
     grid-template-columns: 1fr 1fr;
