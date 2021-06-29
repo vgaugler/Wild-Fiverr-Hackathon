@@ -17,6 +17,8 @@ function SignUp() {
   const { loginStatus, updateLoginStatus } = useContext(BoxLogContext);
   const { name, updateName } = useContext(NameContext);
   const [role, setRole] = useState(null);
+  const [value, setValue] = useState('');
+
   let history = useHistory();
 
   const uiConfig = {
@@ -42,27 +44,40 @@ function SignUp() {
     updateLoginStatus(false);
     history.push('/');
   };
-
+  const handleLogin = (e) => {
+    e.preventDefault();
+    updateBlurStatus(false);
+    updateLoginStatus(false);
+    history.push('/');
+  };
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       // !! ensure boolean
       updateSignedIn(!!user);
 
       if (isSignedIn === true) {
+        const roleAssign = firebase
+          .database()
+          .ref('role')
+          .child(firebase.auth().currentUser.uid);
+        roleAssign.on('value', (snapshot) => {
+          let previousList = snapshot.val();
+          console.log(previousList);
+          setValue(!!previousList);
+        });
         firebase
           .database()
           .ref('abo/' + firebase.auth().currentUser.uid)
           .set({
             Username: firebase.auth().currentUser.displayName,
             email: firebase.auth().currentUser.email,
-            role: role,
           });
         updateName(firebase.auth().currentUser.displayName);
       } else {
         updateName('unknown');
       }
     });
-  }, [name, role, handleSubmit]);
+  }, [name, role, value]);
 
   return (
     <div className={loginStatus ? 'BoxLog Active' : 'BoxLog'}>
@@ -71,56 +86,81 @@ function SignUp() {
           <h2 className='titleBoxLog' style={{ marginBottom: '2.5rem' }}>
             Bonjour {firebase.auth().currentUser.displayName}
           </h2>
-          <div>
-            <p>Choose your freelance level</p>
-            <form
-              onSubmit={handleSubmit}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-
-                justifyContent: 'space-evenly',
-              }}
-            >
-              <div
+          {value ? (
+            <div>
+              <form
+                onSubmit={handleLogin}
                 style={{
                   display: 'flex',
-                  alignItems: 'center',
+                  flexDirection: 'column',
+
                   justifyContent: 'space-evenly',
-                  marginBottom: '2.5rem',
                 }}
               >
-                <input
-                  type='radio'
-                  value='Newbie'
-                  name='role'
-                  onClick={() => setRole('Newbie')}
-                />{' '}
-                Newbie
-                <input
-                  type='radio'
-                  value='Expert'
-                  name='role'
-                  onClick={() => setRole('Expert')}
-                />{' '}
-                Expert
-              </div>
-              <button
-                className='submit'
-                type='submit'
+                {' '}
+                <button
+                  className='submit'
+                  type='submit'
+                  style={{
+                    width: '150px',
+                  }}
+                >
+                  Continuer
+                </button>
+              </form>
+            </div>
+          ) : (
+            <div>
+              <p>Choose your freelance level</p>
+              <form
+                onSubmit={handleSubmit}
                 style={{
-                  width: '150px',
+                  display: 'flex',
+                  flexDirection: 'column',
+
+                  justifyContent: 'space-evenly',
                 }}
               >
-                Valider
-              </button>
-            </form>{' '}
-          </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-evenly',
+                    marginBottom: '2.5rem',
+                  }}
+                >
+                  <input
+                    type='radio'
+                    value='Newbie'
+                    name='role'
+                    onClick={() => setRole('Newbie')}
+                  />{' '}
+                  Newbie
+                  <input
+                    type='radio'
+                    value='Expert'
+                    name='role'
+                    onClick={() => setRole('Expert')}
+                  />{' '}
+                  Expert
+                </div>
+                <button
+                  className='submit'
+                  type='submit'
+                  style={{
+                    width: '150px',
+                  }}
+                >
+                  {value ? 'Continuer' : 'Valider'}
+                </button>
+              </form>{' '}
+            </div>
+          )}
         </div>
       ) : (
         <div>
           <h4 style={{ fontSize: '2rem', marginBottom: '25px' }}>
-            Sign Up with Fiverr
+            {value ? 'Sign in with Fiverr ' : 'Sign Up with Fiverr'}
           </h4>
           <StyledFirebaseAuth
             uiConfig={uiConfig}

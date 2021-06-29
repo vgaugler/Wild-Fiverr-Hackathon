@@ -26,11 +26,22 @@ span {
   display: flex;
 }
 .prod-photo {
- height: 30em;
+  height: 30em;
 }
 .btnChoose {
-  background-color: #013912;
-  color: white;
+  margin-top: 1rem;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: var(--primaryColor);
+  border: none;
+  cursor: pointer;
+  border: 2px solid var(--primaryColor);
+  margin: 20px auto;
+}
+.btnChoose:hover {
+  color: var(--primaryColor);
+  background: transparent;
+  border: 2px solid var(--primaryColor);
 }
 @media (min-width: 992px) {
   .product-center {
