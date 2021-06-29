@@ -1,8 +1,9 @@
-import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import Spinner from "./components/Spinner/Spinner";
-import SingleProduct from "./pages/SingleProduct/SingleProduct";
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
+import Spinner from './components/Spinner/Spinner';
+import SingleProduct from './pages/SingleProduct/SingleProduct';
+import MentorProvider from './context/MentorContext';
 
 const Cart = lazy(() => import('./pages/CartContent/CartItems'));
 const Homepage = lazy(() => import('./pages/Home/Home'));
@@ -15,18 +16,22 @@ const ProductDetails = lazy(() =>
 export default function App() {
   return (
     <Router>
-      <Navbar />
-      <Suspense fallback={<Spinner />}>
-        <Switch>
-          <Route exact path='/' component={Homepage}></Route>
-          <Route exact path='/cart' component={Cart}></Route>
-          <Route exact path='/products' component={Productlist}></Route>
-          <Route
-            exact
-            path="/products/:id" component={SingleProduct}/>
-          <Route exact path="*" component={Errorpage}></Route>
-        </Switch>
-      </Suspense>
+      
+        <Navbar />
+        <Suspense fallback={<Spinner />}>
+        <MentorProvider>
+          <Switch>
+          
+            <Route exact path='/' component={Homepage}></Route>
+            <Route exact path='/cart' component={Cart}></Route>
+            <Route exact path='/products' component={Productlist}></Route>
+            <Route exact path='/products/:id' component={SingleProduct} />
+            <Route exact path='*' component={Errorpage}></Route>
+            
+          </Switch>
+          </MentorProvider>
+        </Suspense>
+      
     </Router>
   );
 }
