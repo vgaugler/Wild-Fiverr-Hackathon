@@ -26,7 +26,11 @@ span {
   display: flex;
 }
 .prod-photo {
- height: 40em;
+ height: 30em;
+}
+.btnChoose {
+  background-color: #013912;
+  color: white;
 }
 @media (min-width: 992px) {
   .product-center {

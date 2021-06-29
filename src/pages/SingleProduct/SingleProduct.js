@@ -7,6 +7,7 @@ const SingleProduct = (props) => {
   const [product, setProduct] = useState({});
   const id = props.match.params.id;
   const [language, setLanguage] = useState([]);
+  const [availabel, setAvailabel] = useState(3)
   const [skills, setSkills] = useState([]);
   useEffect(() => {
     const mentor = firebase.database().ref('user').child(`${id}`);
@@ -17,8 +18,14 @@ const SingleProduct = (props) => {
       setLanguage(snapshot.val().language);
       console.log(language);
       setSkills(snapshot.val().skill);
+      // setAvailabel(snapshot.val().disponibility);
     });
   }, []);
+
+  function choose() {
+    let count = availabel - 1;
+    setAvailabel(count);
+  }
   
 
   return (
@@ -53,6 +60,9 @@ const SingleProduct = (props) => {
               <p className="description">{product.description}</p>
 
               <hr />
+              <p>availability:</p>
+              <p>{availabel}/5</p>  
+              <button type="button" className="btnChoose" onClick={choose}>To choose this Mentor</button>
               
             </section>
           </div>
