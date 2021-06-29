@@ -20,6 +20,7 @@ a {
 }
 .nav {
   color: #444;
+  transition: 0.5s;
 }
 .nav:after {
   position: absolute;
@@ -51,7 +52,8 @@ a {
   margin-bottom: 80px;
 }
 .nav-container-fixed {
-  background: var(--primaryLightColor);
+  background: #d0f7e691;
+  backdrop-filter: blur(2px);
   position: fixed;
   width: 100%;
   top: 0;

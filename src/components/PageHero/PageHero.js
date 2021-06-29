@@ -1,7 +1,7 @@
 import React from 'react';
 import './PageHero.css';
 
-const PageHero = React.memo(function PageHero({ item, name }) {
+const PageHero = React.memo(function PageHero() {
   return (
     <div
       className='heading-center'

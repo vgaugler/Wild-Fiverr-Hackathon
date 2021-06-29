@@ -8,7 +8,7 @@ const SingleProduct = (props) => {
   const id = props.match.params.id;
   const { mentorAttribut } = props.location.mentorProps;
   const [language, setLanguage] = useState([]);
-  const [availabel, setAvailabel] = useState(3);
+  const [availabel, setAvailabel] = useState();
   const [skills, setSkills] = useState([]);
   const [name, setName] = useState();
   useEffect(() => {
@@ -21,7 +21,7 @@ const SingleProduct = (props) => {
 
       setSkills(snapshot.val().skill);
       setName(snapshot.val().name);
-      // setAvailabel(snapshot.val().disponibility);
+      setAvailabel(snapshot.val().disponibility);
       console.log(mentorAttribut);
     });
   }, []);
@@ -46,7 +46,11 @@ const SingleProduct = (props) => {
 
   return (
     <div>
-      <div className='product-center' key={product.id}>
+      <div
+        className='product-center'
+        key={product.id}
+        style={{ marginTop: '80px' }}
+      >
         <img className='prod-photo' src={product.image} alt={product.name} />
         <section className='content-prod'>
           <div class='title_name'>

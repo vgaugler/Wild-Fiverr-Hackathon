@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import PageHero from '../PageHero/PageHero';
+
 import './MentorCard.css';
 
 const MentorCard = ({ mentorList }) => {
   return (
     <>
-      <PageHero />
       <div className='cocktails-center'>
         {mentorList.map((product) => {
           const { id, image, name, activity, language, skill } = product;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import PageHero from '../../components/PageHero/PageHero';
 import firebase from '../../utils/firebaseConfig';
 import MentorCard from '../../components/MentorCard/MentorCard';
 import './ProductList.css';
@@ -45,20 +46,28 @@ const ProductList = () => {
   return (
     <>
       <div style={{ marginTop: '80px' }}>
-        <form>
-          <fieldset className='barSearch'>
-            <label htmlFor='content'>
-              <br />
-              <input
-                type='texte'
-                id='content'
-                className='searchMentor'
-                placeholder='  recherche'
-                onChange={(event) => handleChange(event)}
-                value={search}
-              />
-            </label>
-          </fieldset>
+        <PageHero />
+
+        <form
+          style={{
+            position: 'absolute',
+            top: '324px',
+            left: '35px',
+            zIndex: '200000000',
+            transform: 'translate(35%, 28%)',
+          }}
+        >
+          <label htmlFor='content'>
+            <input
+              type='texte'
+              id='content'
+              className='searchMentor'
+              placeholder='search an activity'
+              onChange={(event) => handleChange(event)}
+              value={search}
+              style={{ outline: 'none' }}
+            />
+          </label>
         </form>
       </div>
       <MentorCard mentorList={filtredMentor} />
