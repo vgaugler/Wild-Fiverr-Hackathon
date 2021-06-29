@@ -16,23 +16,18 @@ SwiperCore.use([Navigation, A11y, EffectFade, Autoplay]);
 
 export default function Home() {
   return (
-    <div className="info">
-      <div className="content">
-        <div className="head">
+    <div className='info'>
+      <div className='content'>
+        <div className='head'>
           <h1>
             Find the perfect <span style={{ color: '#00732e' }}>mentor</span> for your freelance
             growth
           </h1>
-<<<<<<< HEAD
           <div>
             Fiverr Senpai - access expert know-how and support from pillars of the community
           </div>
 
           <Link to='/products'>
-=======
-          <p>Fiverr Senpai is for you</p>
-          <Link to="/products">
->>>>>>> 2d9c7897441e63e349e0613f20bd05f36458b880
             <button>Get Started</button>
           </Link>
         </div>
@@ -46,7 +41,7 @@ export default function Home() {
         </div>
       </div>
       <Swiper
-        effect="fade"
+        effect='fade'
         autoplay
         loop
         fadeEffect={{ crossFade: true }}
@@ -56,8 +51,8 @@ export default function Home() {
       >
         {images.map((image) => (
           <SwiperSlide>
-            <img className="swiper__image" src={image.url} alt={image.desc} />
-            <p className="swiper__text">{image.desc}</p>
+            <img className='swiper__image' src={image.url} alt={image.desc} />
+            <p className='swiper__text'>{image.desc}</p>
           </SwiperSlide>
         ))}
       </Swiper>
