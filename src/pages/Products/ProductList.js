@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import PageHero from '../../components/PageHero/PageHero';
 import firebase from '../../utils/firebaseConfig';
 import MentorCard from '../../components/MentorCard/MentorCard';
 import './ProductList.css';
@@ -46,29 +45,57 @@ const ProductList = () => {
   return (
     <>
       <div style={{ marginTop: '80px' }}>
-        <PageHero />
-
-        <form
+        <div
+          className='heading-center'
           style={{
-            position: 'absolute',
-            top: '324px',
-            left: '35px',
-            zIndex: '200000000',
-            transform: 'translate(35%, 28%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-around',
           }}
         >
-          <label htmlFor='content'>
-            <input
-              type='texte'
-              id='content'
-              className='searchMentor'
-              placeholder='search an activity'
-              onChange={(event) => handleChange(event)}
-              value={search}
-              style={{ outline: 'none' }}
-            />
-          </label>
-        </form>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              justifyContent: 'space-around',
+            }}
+          >
+            <h3 style={{ marginBottom: '25px', fontFamily: 'Macan' }}>
+              {' '}
+              15 mentor available
+            </h3>
+            <h1 style={{ margin: '0', fontFamily: 'Macan', fontSize: '4rem' }}>
+              Find{' '}
+              <span style={{ fontFamily: 'Domaine', fontSize: '4rem' }}>
+                your's
+              </span>
+            </h1>
+            <form
+              style={{
+                marginTop: '25px',
+              }}
+            >
+              <label htmlFor='content'>
+                <input
+                  type='texte'
+                  id='content'
+                  className='searchMentor'
+                  placeholder='search an activity, ex : data, engineer...'
+                  onChange={(event) => handleChange(event)}
+                  value={search}
+                  style={{ outline: 'none' }}
+                  autocomplete='off'
+                />
+              </label>
+            </form>
+          </div>
+          <img
+            src='https://fiverr-res.cloudinary.com/q_auto,f_auto,w_870,dpr_1.0/v1/attachments/generic_asset/asset/d9c17ceebda44764b591a8074a898e63-1599597624757/business-desktop-870-x1.png'
+            alt=''
+            style={{ width: '500px', height: 'auto' }}
+          ></img>
+        </div>
       </div>
       <MentorCard mentorList={filtredMentor} />
     </>

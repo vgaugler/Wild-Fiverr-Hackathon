@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import firebase from '../../utils/firebaseConfig';
 
@@ -11,6 +12,7 @@ const SingleProduct = (props) => {
   const [availabel, setAvailabel] = useState();
   const [skills, setSkills] = useState([]);
   const [name, setName] = useState();
+  const [value, setValue] = useState();
   useEffect(() => {
     const mentor = firebase.database().ref('user').child(`${id}`);
 
@@ -26,6 +28,19 @@ const SingleProduct = (props) => {
     });
   }, []);
 
+  useEffect(() => {
+    const mentor = firebase
+      .database()
+      .ref('mentor')
+      .child(firebase.auth().currentUser.uid)
+      .child(`${id}`);
+
+    mentor.on('value', (snapshot) => {
+      let previousList = snapshot.val();
+      console.log(previousList);
+      setValue(!!previousList);
+    });
+  }, []);
   function choose() {
     let count = availabel - 1;
     setAvailabel(count);
@@ -64,23 +79,102 @@ const SingleProduct = (props) => {
           <span class='fa fa-star review'></span>
           <span class='fa fa-star-half-o review'></span>
           <p>60 Reviews</p>
-          <h5 className='price-prod'>{product.activity}</h5>
-
-          {language.map((el) => (
-            <p>{el}</p>
-          ))}
-          {skills.map((el) => (
-            <span>{el} </span>
-          ))}
-
+          <h5 className='price-prod' style={{ marginBottom: '40px' }}>
+            {product.activity}
+          </h5>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'left',
+            }}
+          >
+            {language.map((el) => (
+              <p
+                style={{
+                  backgroundColor: 'var(--primaryColor)',
+                  color: 'white',
+                  padding: '10px',
+                  marginRight: '10px',
+                  borderRadius: '20px',
+                  cursor: 'pointer',
+                }}
+              >
+                {el}
+              </p>
+            ))}
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'left',
+              marginBottom: '40px',
+            }}
+          >
+            {skills.map((el) => (
+              <span
+                style={{
+                  border: '1px solid rgba(119, 119, 119, 0.65)',
+                  color: 'var(--primaryDarkColor)',
+                  borderRadius: '3px',
+                  fontSize: '11px',
+                  padding: '5px 12px',
+                  margin: '4px',
+                  cursor: 'pointer',
+                  display: 'inline-block',
+                }}
+              >
+                {el}{' '}
+              </span>
+            ))}
+          </div>
           <p className='description'>{product.description}</p>
 
           <hr />
-          <p>availability:</p>
-          <p>{availabel}/5</p>
-          <button type='button' className='btnChoose' onClick={choose}>
-            To choose this Mentor
-          </button>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'left',
+              margin: '20px',
+            }}
+          >
+            {' '}
+            <p
+              style={{
+                margin: '0 20px 0 0',
+              }}
+            >
+              availability:
+            </p>
+            <a
+              style={{
+                backgroundColor: 'var(--primaryDarkColor)',
+                color: 'white',
+                padding: '10px',
+                marginRight: '10px',
+                borderRadius: '20px',
+                cursor: 'pointer',
+              }}
+            >
+              {availabel}/5
+            </a>
+          </div>
+          {value ? (
+            <button
+              type='button'
+              className='btnWait'
+              onClick={choose}
+              disabled={true}
+            >
+              Waiting for approbation
+            </button>
+          ) : (
+            <button type='button' className='btnChoose' onClick={choose}>
+              Choose this mentor
+            </button>
+          )}
         </section>
       </div>
     </div>
