@@ -8,14 +8,24 @@ export default function Home() {
       <div className='content'>
         <div className='head'>
           <h1>
-            Ready to find your personal{' '}
-            <span style={{ color: '#00732e' }}> Mentor ~ </span>{' '}
+            Find the perfect <span style={{ color: '#00732e' }}>mentor</span> for your freelance
+            growth
           </h1>
-          <p>Fiverr Senpai is for you</p>
+          <div>
+            Fiverr Senpai - access expert know-how and support from pillars of the community
+          </div>
 
           <Link to='/products'>
             <button>Get Started</button>
           </Link>
+        </div>
+        <div className='concept'>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. A sint iusto rerum alias
+            architecto voluptas ab rem dignissimos.. Lorem, ipsum dolor sit amet consectetur
+            adipisicing elit. A sint iusto rerum alias architecto voluptas ab rem dignissimos..
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
         </div>
       </div>
       <div className='pic'></div>
