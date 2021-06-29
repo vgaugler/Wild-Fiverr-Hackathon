@@ -94,12 +94,56 @@ div.swiper-button-prev,
   position: absolute;
   top: 50px;
   right: 50px;
-  border: 2px solid var(--primaryColor);
-  color: var(--primaryColor);
-  padding: 5px;
-  mix-blend-mode: difference;
+  color: var(--mainBackground);
+  margin: 20px;
+  width: 80%;
+  /* mix-blend-mode: difference; */
 }
-
+.swiptext {
+  font-size: 1.5em;
+  font-family: 'Domaine';
+  width: 100%;
+}
+.swiper__text2 {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  color: var(--mainBackground);
+  margin: 20px;
+  width: 80%;
+}
+.swiper__text3 {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  color: var(--mainBackground);
+  width: 80%;
+  margin: 20px;
+}
+.swiptext:before {
+  content: '';
+  background-size: 100%;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  background-image: url(../../images/quote1.png);
+  background-repeat: no-repeat;
+  top: -11px;
+  left: -2.3em;
+  z-index: 1000;
+}
+.swiptext:after {
+  content: '';
+  background-size: 100%;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  background-image: url(../../images/quote2.png);
+  background-repeat: no-repeat;
+  bottom: -21px;
+  right: -1.3em;
+  z-index: 1000;
+}
 @media (max-width: 1119px) {
   .info {
     display: flex;
