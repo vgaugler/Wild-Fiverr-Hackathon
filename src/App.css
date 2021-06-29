@@ -1,3 +1,23 @@
+@font-face {
+  font-family: 'Domaine';
+  font-style: normal;
+  font-display: swap;
+  src: local('Domaine'),
+    url('./fonts/domaine-display-web-medium-italic.woff') format('woff'),
+    url('./fonts/domaine-display-web-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Macan';
+  font-style: normal;
+  font-display: swap;
+  src: local('Macan'), url('./fonts/Macan-Regular.woff') format('woff'),
+    url('./fonts/Macan-Light.woff') format('woff'),
+    url('./fonts/Macan-Bold.woff') format('woff'),
+    url('./fonts/Macan-Semibold.woff') format('woff'),
+    url('./fonts/Macan-Regular-Italic.woff') format('woff');
+}
+
 :root {
   --primaryColor: #1dbf73;
   --primaryLightColor: #d0f7e6;
@@ -47,15 +67,18 @@ Global Styles
   padding: 0;
   box-sizing: border-box;
 }
+
 @font-face {
   font-family: 'Domaine';
   src: local('Domaine'),
     url('./fonts/domaine-display-web-medium-italic.woff') format('woff');
 }
+
 @font-face {
   font-family: 'Macan';
   src: local('Macan'), url('./fonts/Macan-Regular.woff') format('woff');
 }
+
 body {
   font-family: 'Macan';
   color: var(--mainBlack);
@@ -64,12 +87,14 @@ body {
   font-size: 1rem;
   font-weight: 300;
 }
-h1 {
-  font-family: 'Domaine';
-}
+
+h1,
+h2,
+h3,
+h4,
 h5,
 h6 {
-  font-family: var(--slantedFont);
+  font-family: 'Domaine', 'Open Sans', 'Helvetica Neue', sans-serif;
   margin-bottom: 1.25rem;
   letter-spacing: var(--mainSpacing);
 }
@@ -142,7 +167,7 @@ Error
 }
 @media screen and (min-width: 576px) {
   .cocktails-center {
-    grid-template-columns: repeat(auto-fill, minmax(338.8px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   }
 }
 
