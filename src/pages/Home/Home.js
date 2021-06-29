@@ -53,12 +53,11 @@ export default function Home() {
         <div className='content'>
           <div className='head'>
             <h1>
-              Find the perfect <span style={{ color: '#00732e' }}>mentor</span>{' '}
-              for your freelance growth
+              Find the perfect <span style={{ color: '#00732e' }}>mentor</span> for your freelance
+              growth
             </h1>
             <div>
-              Fiverr Senpai - access expert know-how and support from pillars of
-              the community
+              Fiverr Senpai - access expert know-how and support from pillars of the community
             </div>
 
             <Link to='/products'>
@@ -66,7 +65,6 @@ export default function Home() {
             </Link>
           </div>
 
-<<<<<<< HEAD
           <Link to='/products'>
             <button>Get Started</button>
           </Link>
@@ -84,17 +82,6 @@ export default function Home() {
               </AccordionItem>
             ))}
           </Accordion>
-=======
-          <div className='concept'>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. A sint
-              iusto rerum alias architecto voluptas ab rem dignissimos.. Lorem,
-              ipsum dolor sit amet consectetur adipisicing elit. A sint iusto
-              rerum alias architecto voluptas ab rem dignissimos.. Lorem, ipsum
-              dolor sit amet consectetur adipisicing elit.
-            </p>
-          </div>
->>>>>>> main
         </div>
         <Swiper
           effect='fade'
