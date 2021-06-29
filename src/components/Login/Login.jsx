@@ -31,8 +31,9 @@ function Login() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       updateSignedIn(!!user);
-      console.log(user);
-      updateName(firebase.auth().currentUser.displayName);
+      if (isSignedIn === true) {
+        updateName(firebase.auth().currentUser.displayName);
+      }
     });
   }, []);
 
