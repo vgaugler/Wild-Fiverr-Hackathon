@@ -47,6 +47,8 @@ const ProductList = () => {
     <div>
       <form>
         <fieldset className="barSearch">
+          <h1>Find your Futur Mentor</h1>
+          <br />
           <label htmlFor="content">
             <br />
             <input
