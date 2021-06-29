@@ -9,6 +9,7 @@ button:focus {
 }
 .info {
   display: flex;
+  margin-top: 80px;
 }
 
 .content {
