@@ -95,7 +95,28 @@ export default function Home() {
           {images.map((image) => (
             <SwiperSlide>
               <img className='swiper__image' src={image.url} alt={image.desc} />
-              <p className='swiper__text'>{image.desc}</p>
+              {image.desc ? (
+                <p className='swiper__text'>
+                  {' '}
+                  <div style={{ position: 'relative' }} className='swiptext'>
+                    {image.desc}
+                  </div>
+                </p>
+              ) : image.desc2 ? (
+                <p className='swiper__text2'>
+                  {' '}
+                  <div style={{ position: 'relative' }} className='swiptext'>
+                    {image.desc2}
+                  </div>
+                </p>
+              ) : image.desc3 ? (
+                <p className='swiper__text3'>
+                  {' '}
+                  <div style={{ position: 'relative' }} className='swiptext'>
+                    {image.desc3}
+                  </div>
+                </p>
+              ) : null}
             </SwiperSlide>
           ))}
         </Swiper>
