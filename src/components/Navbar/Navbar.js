@@ -11,7 +11,7 @@ import { NameContext } from '../../context/NameProvider';
 import { BoxLogContext2 } from '../../context/LogProvider2';
 import firebase from '../../utils/firebaseConfig';
 
-export default function Navbar() {
+export default function Navbar({ visible }) {
   const { updateLoginStatus } = useContext(BoxLogContext);
   const { updateLoginStatus2 } = useContext(BoxLogContext2);
   const { isSignedIn } = useContext(UserContext);
@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     <div className={blurStatus ? 'nav blur' : 'nav'}>
-      <div className='nav-container'>
+      <div className={visible ? 'nav-container-fixed' : 'nav-container'}>
         <img src={Logo} alt='' style={{ width: '150px', height: 'auto' }}></img>
 
         <ul className='links'>

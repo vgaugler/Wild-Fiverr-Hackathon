@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import PageHero from '../../components/PageHero/PageHero';
 import firebase from '../../utils/firebaseConfig';
 import MentorCard from '../../components/MentorCard/MentorCard';
 import './ProductList.css';
 import { mentorContext } from '../../context/MentorContext';
 const ProductList = () => {
-  const {mentorList, setMentorList} = useContext(mentorContext)
-  console.log(mentorList)
+  const { mentorList, setMentorList } = useContext(mentorContext);
+  console.log(mentorList);
 
   const [search, setSearch] = useState('');
   const [filtredMentor, setFiltredMentor] = useState([]);
@@ -14,7 +15,6 @@ const ProductList = () => {
   const handleChange = (event) => {
     setSearch(event.target.value);
   };
-
 
   useEffect(() => {
     const mentor = firebase.database().ref('user');
@@ -26,43 +26,50 @@ const ProductList = () => {
         list.push({ id, ...previousList[id] });
       }
       setMentorList(list);
-      setFiltredMentor(list)
-      console.log(mentorList)
-      console.log(filtredMentor)
-      
+      setFiltredMentor(list);
+      console.log(mentorList);
+      console.log(filtredMentor);
     });
   }, []);
 
   useEffect(() => {
-    let temp = mentorList.filter((el) => search && el.activity.toLowerCase().includes(search))
-    console.log(temp)
-    setFiltredMentor(temp)
-    if(!temp.length){
-      setFiltredMentor(mentorList)
+    let temp = mentorList.filter(
+      (el) => search && el.activity.toLowerCase().includes(search)
+    );
+    console.log(temp);
+    setFiltredMentor(temp);
+    if (!temp.length) {
+      setFiltredMentor(mentorList);
     }
-  }, [search])
+  }, [search]);
 
   return (
     <>
-    <div>
-      <form>
-        <fieldset className="barSearch">
-          <h1>Find your Futur Mentor</h1>
-          <br />
-          <label htmlFor="content">
-            <br />
+      <div style={{ marginTop: '80px' }}>
+        <PageHero />
+
+        <form
+          style={{
+            position: 'absolute',
+            top: '324px',
+            left: '35px',
+            zIndex: '200000000',
+            transform: 'translate(35%, 28%)',
+          }}
+        >
+          <label htmlFor='content'>
             <input
-              type="texte"
-              id="content"
-              className="searchMentor"
-              placeholder="  recherche"
+              type='texte'
+              id='content'
+              className='searchMentor'
+              placeholder='search an activity'
               onChange={(event) => handleChange(event)}
               value={search}
+              style={{ outline: 'none' }}
             />
           </label>
-        </fieldset>
-      </form>
-    </div>
+        </form>
+      </div>
       <MentorCard mentorList={filtredMentor} />
     </>
   );

@@ -46,7 +46,11 @@ const SingleProduct = (props) => {
 
   return (
     <div>
-      <div className='product-center' key={product.id}>
+      <div
+        className='product-center'
+        key={product.id}
+        style={{ marginTop: '80px' }}
+      >
         <img className='prod-photo' src={product.image} alt={product.name} />
         <section className='content-prod'>
           <div class='title_name'>
