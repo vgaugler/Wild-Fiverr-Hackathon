@@ -1,6 +1,6 @@
 .err {
   text-align: center;
-  background-color: #44a1a0;
+  background-color: var(--primaryColor);
   margin: 0;
   padding: 25px;
   color: whitesmoke;
@@ -21,7 +21,7 @@
   font-size: 24px;
   text-decoration: none;
   border: none;
-  color: #01847f;
+  color: var(--primaryColor);
   border-radius: 8px;
   padding: 12px 20px;
   cursor: pointer;
