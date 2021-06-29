@@ -1,23 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Logo from '../../images/logo.jpg';
 import { BoxLogContext } from '../../context/LogProvider';
 import { UserContext } from '../../context/UserProvider';
 import { BlurContext } from '../../context/BlurProvider';
-import Login from '../Login/Login';
 import SignUp from '../Login/SignUp';
 import { NameContext } from '../../context/NameProvider';
-import { BoxLogContext2 } from '../../context/LogProvider2';
 import firebase from '../../utils/firebaseConfig';
 
 export default function Navbar({ visible }) {
   const { updateLoginStatus } = useContext(BoxLogContext);
-  const { updateLoginStatus2 } = useContext(BoxLogContext2);
   const { isSignedIn } = useContext(UserContext);
   const { blurStatus, updateBlurStatus } = useContext(BlurContext);
   const { name } = useContext(NameContext);
+  const [value, setValue] = useState();
 
+  useEffect(() => {
+    const mentor = firebase
+      .database()
+      .ref('mentor')
+      .child(firebase.auth().currentUser.uid);
+
+    mentor.on('value', (snapshot) => {
+      let previousList = snapshot.val();
+      let list = [];
+      for (let id in previousList) {
+        list.push({ id, ...previousList[id] });
+      }
+      setValue(list);
+    });
+  }, []);
   return (
     <div className={blurStatus ? 'nav blur' : 'nav'}>
       <div className={visible ? 'nav-container-fixed' : 'nav-container'}>
@@ -35,7 +48,6 @@ export default function Navbar({ visible }) {
           </Link>
         </ul>
         <SignUp />
-        {/* <Login /> */}
         <div className='user'>
           {' '}
           {isSignedIn ? (
@@ -103,7 +115,7 @@ export default function Navbar({ visible }) {
               <path d='M16 6v2h2l2 12H0L2 8h2V6a6 6 0 1 1 12 0zm-2 0a4 4 0 1 0-8 0v2h8V6zM4 10v2h2v-2H4zm10 0v2h2v-2h-2z' />
             </svg>
             <div className='amount-container'>
-              <p className='total-amount'>0</p>
+              <p className='total-amount'>{value.length}</p>
             </div>
           </div>
         </div>

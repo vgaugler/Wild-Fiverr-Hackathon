@@ -38,6 +38,16 @@ span {
   border: 2px solid var(--primaryColor);
   margin: 20px auto;
 }
+.btnWait {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: var(--mainRed);
+  border: none;
+  cursor: pointer;
+  border: 2px solid var(--mainRed);
+  margin: 20px auto;
+}
 .btnChoose:hover {
   color: var(--primaryColor);
   background: transparent;
