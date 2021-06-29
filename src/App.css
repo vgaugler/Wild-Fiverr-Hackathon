@@ -1,18 +1,21 @@
 @font-face {
-  font-family: 'Domaine';  font-style: normal;  font-display: swap;
+  font-family: 'Domaine';
+  font-style: normal;
+  font-display: swap;
   src: local('Domaine'),
     url('./fonts/domaine-display-web-medium-italic.woff') format('woff'),
     url('./fonts/domaine-display-web-bold.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'Macan'; font-style: normal;  font-display: swap;
-  src: local('Macan'),
-    url('./fonts/Macan-Regular.woff') format('woff'),
+  font-family: 'Macan';
+  font-style: normal;
+  font-display: swap;
+  src: local('Macan'), url('./fonts/Macan-Regular.woff') format('woff'),
     url('./fonts/Macan-Light.woff') format('woff'),
     url('./fonts/Macan-Bold.woff') format('woff'),
     url('./fonts/Macan-Semibold.woff') format('woff'),
-    url('./fonts/Macan-Regular-Italic.woff') format('woff'),
+    url('./fonts/Macan-Regular-Italic.woff') format('woff');
 }
 
 :root {
@@ -163,7 +166,7 @@ Error
 }
 @media screen and (min-width: 576px) {
   .cocktails-center {
-    grid-template-columns: repeat(auto-fill, minmax(338.8px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   }
 }
 

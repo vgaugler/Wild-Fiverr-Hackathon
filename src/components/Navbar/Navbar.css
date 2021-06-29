@@ -21,6 +21,21 @@ a {
 .nav {
   color: #444;
 }
+.nav:after {
+  position: absolute;
+  background-color: transparent;
+  content: '';
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.nav.blur:after {
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.6);
+}
 
 .nav-container {
   display: flex;
@@ -58,6 +73,7 @@ a {
   justify-content: center;
   padding: 10px;
   border: 2px solid transparent;
+  margin-left: 10px;
 }
 
 .login:hover {
@@ -72,6 +88,7 @@ a {
 .user {
   display: flex;
   margin-bottom: 2px;
+  align-items: center;
 }
 .nav-item {
   display: block;
@@ -102,7 +119,9 @@ nav svg {
   color: #3aafa9;
   font-family: cursive;
 }
-
+.signup:hover {
+  color: var(--primaryColor);
+}
 @media (min-width: 767px) {
   .nav-container {
     padding: 20px;

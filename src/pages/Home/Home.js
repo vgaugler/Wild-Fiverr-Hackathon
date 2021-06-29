@@ -9,7 +9,7 @@ export default function Home() {
         <div className='head'>
           <h1>
             Ready to find your personal{' '}
-            <span style={{ color: '#00732e' }}> Mentor </span>{' '}
+            <span style={{ color: '#00732e' }}> Mentor ~ </span>{' '}
           </h1>
           <p>Fiverr Senpai is for you</p>
 
