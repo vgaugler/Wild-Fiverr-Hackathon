@@ -4,12 +4,12 @@ import Navbar from "./components/Navbar/Navbar";
 import Spinner from "./components/Spinner/Spinner";
 import SingleProduct from "./pages/SingleProduct/SingleProduct";
 
-const Cart = lazy(() => import("./pages/CartContent/CartItems"));
-const Homepage = lazy(() => import("./pages/Home/Home"));
-const Errorpage = lazy(() => import("./pages/Error/Error"));
-const Productlist = lazy(() => import("./pages/Products/ProductList"));
+const Cart = lazy(() => import('./pages/CartContent/CartItems'));
+const Homepage = lazy(() => import('./pages/Home/Home'));
+const Errorpage = lazy(() => import('./pages/Error/Error'));
+const Productlist = lazy(() => import('./pages/Products/ProductList'));
 const ProductDetails = lazy(() =>
-  import("./pages/SingleProduct/SingleProduct")
+  import('./pages/SingleProduct/SingleProduct')
 );
 
 export default function App() {
@@ -18,9 +18,9 @@ export default function App() {
       <Navbar />
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <Route exact path="/" component={Homepage}></Route>
-          <Route exact path="/cart" component={Cart}></Route>
-          <Route exact path="/products" component={Productlist}></Route>
+          <Route exact path='/' component={Homepage}></Route>
+          <Route exact path='/cart' component={Cart}></Route>
+          <Route exact path='/products' component={Productlist}></Route>
           <Route
             exact
             path="/products/:id" component={SingleProduct}/>
