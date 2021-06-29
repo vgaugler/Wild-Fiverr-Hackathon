@@ -30,17 +30,19 @@ function SignUp() {
       signInSuccess: () => false,
     },
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
     firebase
       .database()
-      .ref('abo/' + firebase.auth().currentUser.uid)
-      .child(role);
+      .ref('role/' + firebase.auth().currentUser.uid)
+      .child('role')
+      .set(role);
     updateBlurStatus(false);
     updateLoginStatus(false);
     history.push('/');
   };
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       // !! ensure boolean
@@ -60,7 +62,7 @@ function SignUp() {
         updateName('unknown');
       }
     });
-  }, [name, role]);
+  }, [name, role, handleSubmit]);
 
   return (
     <div className={loginStatus ? 'BoxLog Active' : 'BoxLog'}>

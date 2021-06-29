@@ -1,45 +1,76 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useProductsContext } from "../../context/products_context";
-import AddToCart from "../../components/Cart/AddToCart";
+import React, {useState, useEffect} from "react";
+import firebase from '../../utils/firebaseConfig';
+
 import "./SingleProduct.css";
 
-const SingleProduct = () => {
-  const { id } = useParams();
-  const { products } = useProductsContext();
+const SingleProduct = (props) => {
+  const [product, setProduct] = useState({});
+  const id = props.match.params.id;
+  const [language, setLanguage] = useState([]);
+  const [availabel, setAvailabel] = useState(3)
+  const [skills, setSkills] = useState([]);
+  useEffect(() => {
+    const mentor = firebase.database().ref('user').child(`${id}`);
 
-  const temp = products.filter((product) => product.id === id);
+    mentor.on('value', (snapshot) => {
+      setProduct(snapshot.val());
+      console.log(product);
+      setLanguage(snapshot.val().language);
+      console.log(language);
+      setSkills(snapshot.val().skill);
+      // setAvailabel(snapshot.val().disponibility);
+    });
+  }, []);
+
+  function choose() {
+    let count = availabel - 1;
+    setAvailabel(count);
+  }
+  
 
   return (
     <div>
-      {temp.map((products) => {
-        const { name, price, description, stock, image } = products;
-        return (
-          <div className="product-center" key={products.id}>
-            <img className="prod-photo" src={image} alt={name} />
+      
+        
+          <div className="product-center" key={product.id}>
+            <img className="prod-photo" src={product.image} alt={product.name} />
             <section className="content-prod">
-              <h2>{name}</h2>
+              <div class="title_name">
+              <h2>{product.name}</h2>
+              
+              <h5>@{product.nationality}</h5>
+              </div>
               <span class="fa fa-star review"></span>
               <span class="fa fa-star review"></span>
               <span class="fa fa-star review"></span>
               <span class="fa fa-star review"></span>
               <span class="fa fa-star-half-o review"></span>
               <p>60 Reviews</p>
-              <h5 className="price-prod">${price}</h5>
-              <p className="description"> {description}</p>
-              <p className="info-prod">
-                <span>Available : </span>
-                In stock
-              </p>
+              <h5 className="price-prod">{product.activity}</h5>
+              
+              {language.map((el) =>               
+                 <p>{el}</p>                
+               )}
+               {skills.map((el) =>               
+                 <span>{el} </span>                
+               )}
+              
+              
+
+              <p className="description">{product.description}</p>
 
               <hr />
-              {{ stock } && <AddToCart product={products} />}
+              <p>availability:</p>
+              <p>{availabel}/5</p>  
+              <button type="button" className="btnChoose" onClick={choose}>To choose this Mentor</button>
+              
             </section>
           </div>
-        );
-      })}
+        
+      
     </div>
-  );
+    );
+  
 };
 
 export default SingleProduct;
