@@ -12,6 +12,7 @@
     "firebase": "^8.6.8",
     "firebaseui": "^4.8.0",
     "react": "^17.0.1",
+    "react-accessible-accordion": "^3.3.4",
     "react-custom-radio": "^1.0.7",
     "react-dom": "^17.0.1",
     "react-firebaseui": "^5.0.2",

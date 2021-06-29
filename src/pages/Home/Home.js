@@ -2,6 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
+// Import accordion components
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
+
 // import Swiper core and required modules
 import SwiperCore, { Navigation, A11y, EffectFade, Autoplay } from 'swiper';
 
@@ -13,6 +22,27 @@ import 'swiper/swiper-bundle.css';
 
 import images from '../../utils/homeImages';
 SwiperCore.use([Navigation, A11y, EffectFade, Autoplay]);
+
+const items = [
+  {
+    uuid: 1,
+    heading: 'HEADING 1 HEADING 1 HEADING 1',
+    content:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias sit natus corporis laudantium? Voluptatibus sunt, eveniet rerum vero ut porro sed, ipsum culpa optio at quidem numquam',
+  },
+  {
+    uuid: 2,
+    heading: 'HEADING 2',
+    content:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias sit natus corporis laudantium? Voluptatibus sunt, eveniet rerum vero ut porro sed, ipsum culpa optio at quidem numquam',
+  },
+  {
+    uuid: 3,
+    heading: 'HEADING 3',
+    content:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias sit natus corporis laudantium? Voluptatibus sunt, eveniet rerum vero ut porro sed, ipsum culpa optio at quidem numquam',
+  },
+];
 
 export default function Home() {
   return (
@@ -32,12 +62,18 @@ export default function Home() {
           </Link>
         </div>
         <div className='concept'>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. A sint iusto rerum alias
-            architecto voluptas ab rem dignissimos.. Lorem, ipsum dolor sit amet consectetur
-            adipisicing elit. A sint iusto rerum alias architecto voluptas ab rem dignissimos..
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
+          <Accordion className='accordion' allowZeroExpanded>
+            {items.map((item) => (
+              <AccordionItem className='accordion__item' key={item.uuid}>
+                <AccordionItemHeading>
+                  <AccordionItemButton className='accordion__button'>
+                    {item.heading}
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel className='accordion__panel'>{item.content}</AccordionItemPanel>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
       <Swiper
