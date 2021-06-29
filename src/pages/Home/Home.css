@@ -17,10 +17,7 @@ button:focus {
   padding: 50px;
   display: flex;
   align-items: center;
-<<<<<<< HEAD
   justify-content: flex-start;
-=======
->>>>>>> main
   flex-direction: column;
   background-color: #ecf0f1;
 }
