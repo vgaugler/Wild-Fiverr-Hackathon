@@ -42,7 +42,7 @@ const SingleProduct = (props) => {
               <h5 className="price-prod">{product.activity}</h5>
               
               {language.map((el) =>               
-                 <span>{el} </span>                
+                 <p>{el}</p>                
                )}
                {skills.map((el) =>               
                  <span>{el} </span>                
