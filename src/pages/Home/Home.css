@@ -67,6 +67,39 @@ button:focus {
   border: 2px solid var(--primaryColor);
 }
 
+.swiper-container {
+  max-width: 60vw;
+  max-height: 90vh;
+  overflow: hidden;
+  background-color: var(--secondaryBackground);
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+div.swiper-button-prev,
+.swiper-button-next {
+  color: var(--primaryColor) !important;
+}
+
+.swiper__image {
+  min-width: max-content;
+  height: max-content;
+  min-height: 100%;
+}
+
+.swiper__text {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  border: 2px solid var(--primaryColor);
+  color: var(--primaryColor);
+  padding: 5px;
+  mix-blend-mode: difference;
+}
+
 @media (max-width: 1119px) {
   .info {
     display: flex;
