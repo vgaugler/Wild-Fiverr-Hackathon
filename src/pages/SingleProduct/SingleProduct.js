@@ -91,6 +91,7 @@ const SingleProduct = (props) => {
           >
             {language.map((el) => (
               <p
+                className='tag'
                 style={{
                   backgroundColor: 'var(--primaryColor)',
                   color: 'white',
