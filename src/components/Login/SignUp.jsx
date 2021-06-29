@@ -18,7 +18,7 @@ function SignUp() {
   const { name, updateName } = useContext(NameContext);
   const [role, setRole] = useState(null);
   const [value, setValue] = useState('');
-  const [alreadySign, setAlreadySign] = useState(false);
+
   let history = useHistory();
 
   const uiConfig = {
@@ -46,7 +46,6 @@ function SignUp() {
   };
   const handleLogin = (e) => {
     e.preventDefault();
-
     updateBlurStatus(false);
     updateLoginStatus(false);
     history.push('/');
@@ -78,7 +77,7 @@ function SignUp() {
         updateName('unknown');
       }
     });
-  }, []);
+  }, [name, role, value]);
 
   return (
     <div className={loginStatus ? 'BoxLog Active' : 'BoxLog'}>

@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from 'react';
 import firebase from '../../utils/firebaseConfig';
 
-import "./SingleProduct.css";
+import './SingleProduct.css';
 
 const SingleProduct = (props) => {
   const [product, setProduct] = useState({});
   const id = props.match.params.id;
   const [language, setLanguage] = useState([]);
-  const [availabel, setAvailabel] = useState(3)
+  const [availabel, setAvailabel] = useState(3);
   const [skills, setSkills] = useState([]);
   useEffect(() => {
     const mentor = firebase.database().ref('user').child(`${id}`);
@@ -26,51 +26,44 @@ const SingleProduct = (props) => {
     let count = availabel - 1;
     setAvailabel(count);
   }
-  
 
   return (
     <div>
-      
-        
-          <div className="product-center" key={product.id}>
-            <img className="prod-photo" src={product.image} alt={product.name} />
-            <section className="content-prod">
-              <div class="title_name">
-              <h2>{product.name}</h2>
-              
-              <h5>@{product.nationality}</h5>
-              </div>
-              <span class="fa fa-star review"></span>
-              <span class="fa fa-star review"></span>
-              <span class="fa fa-star review"></span>
-              <span class="fa fa-star review"></span>
-              <span class="fa fa-star-half-o review"></span>
-              <p>60 Reviews</p>
-              <h5 className="price-prod">{product.activity}</h5>
-              
-              {language.map((el) =>               
-                 <p>{el}</p>                
-               )}
-               {skills.map((el) =>               
-                 <span>{el} </span>                
-               )}
-              
-              
+      <div className='product-center' key={product.id}>
+        <img className='prod-photo' src={product.image} alt={product.name} />
+        <section className='content-prod'>
+          <div class='title_name'>
+            <h2>{product.name}</h2>
 
-              <p className="description">{product.description}</p>
-
-              <hr />
-              <p>availability:</p>
-              <p>{availabel}/5</p>  
-              <button type="button" className="btnChoose" onClick={choose}>To choose this Mentor</button>
-              
-            </section>
+            <h5>@{product.nationality}</h5>
           </div>
-        
-      
+          <span class='fa fa-star review'></span>
+          <span class='fa fa-star review'></span>
+          <span class='fa fa-star review'></span>
+          <span class='fa fa-star review'></span>
+          <span class='fa fa-star-half-o review'></span>
+          <p>60 Reviews</p>
+          <h5 className='price-prod'>{product.activity}</h5>
+
+          {language.map((el) => (
+            <p>{el}</p>
+          ))}
+          {skills.map((el) => (
+            <span>{el} </span>
+          ))}
+
+          <p className='description'>{product.description}</p>
+
+          <hr />
+          <p>availability:</p>
+          <p>{availabel}/5</p>
+          <button type='button' className='btnChoose' onClick={choose}>
+            To choose this Mentor
+          </button>
+        </section>
+      </div>
     </div>
-    );
-  
+  );
 };
 
 export default SingleProduct;
