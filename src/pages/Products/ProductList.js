@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import firebase from '../../utils/firebaseConfig';
 import AddToCart from '../../components/Cart/AddToCart';
 import PageHero from '../../components/PageHero/PageHero';
-import '../../App.css';
 
 const ProductList = () => {
   const [mentorList, setMentorList] = useState([]);
@@ -24,22 +23,22 @@ const ProductList = () => {
   return (
     <>
       <PageHero />
-      <div className='cocktails-center'>
+      <div className="cocktails-center">
         {mentorList.map((product) => {
           const { id, image, name, activity, language, skill } = product;
           return (
             <article
               key={id}
-              className='cocktail'
+              className="cocktail"
               style={{ position: 'relative' }}
             >
-              <div className='img-container'>
-                <img src={image} alt={name} />
+              <div className="img-container">
+                {/* <img src={image} alt={name} /> */}
               </div>
-              <div className='cocktail-footer'>
-                <div className='product'>
+              <div className="cocktail-footer">
+                <div className="product">
                   <h4>{name}</h4>
-                  <h4 className='price'>{activity}</h4>
+                  <h4 className="price">{activity}</h4>
                 </div>
                 <div
                   style={{
@@ -52,7 +51,7 @@ const ProductList = () => {
                 >
                   {language.map((m) => (
                     <div
-                      className='tag'
+                      className="tag"
                       style={{
                         backgroundColor: 'var(--primaryColor)',
                         color: 'white',
@@ -77,7 +76,7 @@ const ProductList = () => {
                 >
                   {skill.map((m) => (
                     <div
-                      className='tag2'
+                      className="tag2"
                       style={{
                         border: '1px solid hsla(0, 0%, 46.7%, 0.65)',
                         color: 'var(--primaryDarkColor)',
@@ -95,7 +94,7 @@ const ProductList = () => {
                 </div>
                 <Link
                   to={`/products/${id}`}
-                  className='add-cart'
+                  className="add-cart"
                   style={{
                     color: 'var(--primaryColor)',
                     background: '#fff',
