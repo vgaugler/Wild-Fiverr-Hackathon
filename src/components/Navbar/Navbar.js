@@ -35,7 +35,7 @@ export default function Navbar() {
           </Link>
         </ul>
         <SignUp />
-        {/* {updateLoginStatus2 ? <Login /> : null} */}
+
         <div className='user'>
           {' '}
           {isSignedIn ? (
@@ -88,7 +88,7 @@ export default function Navbar() {
               className='login'
               style={{ cursor: 'pointer', marginRight: '10px' }}
               onClick={() => {
-                updateLoginStatus2(true);
+                updateLoginStatus(true);
                 updateBlurStatus(true);
               }}
             >

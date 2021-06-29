@@ -53,6 +53,7 @@ a {
 .links {
   display: flex;
   justify-content: center;
+  transition: 0.6s;
 }
 .links li {
   padding: 10px;

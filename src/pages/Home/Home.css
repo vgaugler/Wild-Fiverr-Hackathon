@@ -15,10 +15,8 @@ button:focus {
   width: 40%;
   text-align: center;
   padding: 50px;
-  height: 90vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   flex-direction: column;
   background-color: #ecf0f1;
 }
@@ -60,6 +58,8 @@ button:focus {
   background-color: var(--primaryColor);
   border: none;
   cursor: pointer;
+  border: 2px solid var(--primaryColor);
+  margin: 20px auto;
 }
 .content button:hover {
   color: var(--primaryColor);
