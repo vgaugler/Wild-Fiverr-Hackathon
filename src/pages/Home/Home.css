@@ -193,7 +193,7 @@ div.swiper-button-prev,
   padding: 18px;
   width: 100%;
   text-align: left;
-  border: none;
+  border: 2px solid transparent;
 }
 
 .accordion__button:hover {
