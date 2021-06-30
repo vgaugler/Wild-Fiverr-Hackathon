@@ -148,7 +148,6 @@ nav svg {
 }
 .nav h1 {
   color: #3aafa9;
-  font-family: cursive;
 }
 .signup:hover {
   color: var(--primaryColor);
