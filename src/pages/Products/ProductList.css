@@ -10,6 +10,7 @@
   color: #fff;
   background-color: var(--pinkDarkColor);
   min-height: 10vh;
+  max-height: 35vh;
   width: 90vvw;
   display: flex;
   align-items: center;
