@@ -1,0 +1,16 @@
+.boxProgress {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.boxHead {
+  color: #fff;
+  background-color: var(--pinkDarkColor);
+  min-height: 10vh;
+  width: 90vvw;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  display: flex;
+  justify-content: space-around;
+}

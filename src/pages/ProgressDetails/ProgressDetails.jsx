@@ -3,6 +3,9 @@ import { useContext, useState, useEffect } from 'react';
 import Chat from '../../components/Chat/Chat';
 import { UserContext } from '../../context/UserProvider';
 import firebase from '../../utils/firebaseConfig';
+import './ProgressDetail.css';
+import Ban from '../../images/edd.png';
+import { width } from 'dom7';
 
 const ProgressionDetails = () => {
   const { id } = useParams();
@@ -61,15 +64,21 @@ const ProgressionDetails = () => {
       .set(mentor);
   }
   return (
-    <div>
-      <div
-        className="product-center"
-        key={product.id}
-        style={{ marginTop: '80px' }}
-      >
-        <img className="prod-photo" src={product.image} alt={product.name} />
+    <div style={{ marginTop: '80px' }}>
+      <div className='boxHead'>
+        <h1 style={{ textAlign: 'end', margin: '60px', fontSize: '3rem' }}>
+          Just Chatting
+        </h1>
+        <img src={Ban} style={{ width: '500px', height: 'auto' }}></img>
       </div>
-      <Chat id={id} />
+      <div key={product.id} className='boxProgress'>
+        <img
+          src={product.image}
+          alt={product.name}
+          style={{ width: '50%', height: 'auto' }}
+        />{' '}
+        <Chat id={id} />
+      </div>
     </div>
   );
 };

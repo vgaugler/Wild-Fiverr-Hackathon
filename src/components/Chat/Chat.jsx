@@ -5,6 +5,7 @@ import { UserContext } from '../../context/UserProvider';
 import firebase from '../../utils/firebaseConfig';
 import { Scrollbars } from 'react-custom-scrollbars';
 import './Chat.css';
+import MentorCard from '../MentorCard/MentorCard';
 
 function Chat({ id }) {
   const { isSignedIn } = useContext(UserContext);
@@ -100,7 +101,7 @@ function Chat({ id }) {
   useEffect(() => {
     const temp = comment && commentMentor ? [...comment, ...commentMentor] : [];
     const temp2 = temp.sort((a, b) =>
-      a.timeStamp < b.timeStamp ? -1 : a.timeStamp > b.timeStamp ? 1 : 0,
+      a.timeStamp < b.timeStamp ? -1 : a.timeStamp > b.timeStamp ? 1 : 0
     );
     setAllComment(temp2);
   }, [comment, commentMentor]);
@@ -137,65 +138,75 @@ function Chat({ id }) {
   };
 
   return (
-    <div>
-      <Scrollbars
-        className="boxComment"
-        style={{ width: '50%', height: '500px', position: 'relative' }}
-      >
-        {isSignedIn ? (
-          <div style={{ marginRight: '73px' }}>
-            {allComment
-              ? allComment.map((m) => (
+    <Scrollbars
+      className='boxComment'
+      style={{
+        width: '50%',
+        height: '500px',
+        position: 'relative',
+        margin: '0 10px 0 10px',
+      }}
+    >
+      {isSignedIn ? (
+        <div style={{ marginRight: '73px' }}>
+          {allComment
+            ? allComment.map((m) => (
+                <div
+                  className={m.name == 'fedor russie' ? 'boxGrey' : 'boxGreen'}
+                >
+                  <h5>
+                    {m.id == firebase.auth().currentUser.uid ? 'Vous' : m.name}{' '}
+                  </h5>
+                  <div>{m.commentary}</div>
                   <div
-                    className={role.role == 'Newbie' ? 'boxGreen' : 'boxGrey'}
+                    style={{
+                      marginTop: '15px',
+                      textAlign: 'end',
+                      fontSize: '10px',
+                    }}
                   >
-                    <div>
-                      {m.id == firebase.auth().currentUser.uid ? 'Vous' : null}{' '}
-                    </div>
-                    <div>{m.commentary}</div>
-                    <div>{m.date}</div>
+                    {m.date}
                   </div>
-                ))
-              : null}
-          </div>
-        ) : null}
-        <div>
-          <form
-            onSubmit={(e) => {
-              isSignedIn
-                ? handleSubmitCommentary(e)
-                : alert('Vous devez être connecté pour poster un commentaire');
-            }}
-          >
-            <input
-              type="text"
-              placeholder="votre commentaire"
-              onChange={myChangeHandlerCommentary}
-              className="input-comment1"
-              value={commentary}
-              maxLength={maxLength}
-            />{' '}
-            {commentary ? (
-              <div>
-                ({maxLength - commentary.length} caractères restants /
-                {maxLength})
-              </div>
-            ) : null}
-            <button
-              className="publishButton"
-              type="submit"
-              // onClick={() => {
-              //   isSignedIn
-              //     ? handleSubmitCommentary()
-              //     : alert('Vous devez être connecté pour poster un commentaire');
-              // }}
-            >
-              Publier
-            </button>
-          </form>
+                </div>
+              ))
+            : null}
         </div>
-      </Scrollbars>
-    </div>
+      ) : null}
+      <div>
+        <form
+          onSubmit={(e) => {
+            isSignedIn
+              ? handleSubmitCommentary(e)
+              : alert('Vous devez être connecté pour poster un commentaire');
+          }}
+        >
+          <input
+            type='text'
+            placeholder='votre commentaire'
+            onChange={myChangeHandlerCommentary}
+            className='input-comment1'
+            value={commentary}
+            maxLength={maxLength}
+          />{' '}
+          {commentary ? (
+            <div>
+              ({maxLength - commentary.length} caractères restants /{maxLength})
+            </div>
+          ) : null}
+          <button
+            className='publishButton'
+            type='submit'
+            // onClick={() => {
+            //   isSignedIn
+            //     ? handleSubmitCommentary()
+            //     : alert('Vous devez être connecté pour poster un commentaire');
+            // }}
+          >
+            Publier
+          </button>
+        </form>
+      </div>
+    </Scrollbars>
   );
 }
 
