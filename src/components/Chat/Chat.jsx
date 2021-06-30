@@ -8,10 +8,13 @@ import './Chat.css';
 function Chat({ id }) {
   const { isSignedIn } = useContext(UserContext);
   const [commentary, setCommentary] = useState('');
+  //user comment
   const [comment, setComment] = useState();
   const [role, setRole] = useState();
+  //mentor comment
   const [commentMentor, setCommentMentor] = useState();
-  const allComment = [];
+
+  const [allComment, setAllComment] = useState([]);
   const maxLength = 150;
   const myChangeHandlerCommentary = (event) => {
     setCommentary(event.target.value);
@@ -35,7 +38,6 @@ function Chat({ id }) {
         console.log(list);
         setComment(list);
         console.log(comment);
-        allComment.push(comment);
       });
     }
   }, []);
@@ -53,7 +55,6 @@ function Chat({ id }) {
         console.log(list);
         setCommentMentor(list);
         console.log(commentMentor);
-        allComment.push(commentMentor);
         console.log(allComment);
       });
     }
@@ -95,7 +96,13 @@ function Chat({ id }) {
     }
   }, []);
 
-  const handleSubmitCommentary = () => {
+  useEffect(() => {
+    const temp = comment && commentMentor ? [...comment, ...commentMentor] : [];
+    console.log(temp);
+  }, [comment, commentMentor]);
+
+  const handleSubmitCommentary = (e) => {
+    e.preventDefault();
     const date1 = new Date();
     const date2 = Date.now();
     const dateLocale = date1.toLocaleString('fr-FR', {
@@ -112,6 +119,7 @@ function Chat({ id }) {
       commentary,
       id: firebase.auth().currentUser.uid,
       name: firebase.auth().currentUser.displayName,
+      timeStamp: date2,
     };
     firebase
       .database()
@@ -158,12 +166,18 @@ function Chat({ id }) {
         </div>
       ) : null}
       <div>
-        <form>
+        <form
+          onSubmit={(e) => {
+            isSignedIn
+              ? handleSubmitCommentary(e)
+              : alert('Vous devez être connecté pour poster un commentaire');
+          }}
+        >
           <input
-            type='text'
-            placeholder='votre commentaire'
+            type="text"
+            placeholder="votre commentaire"
             onChange={myChangeHandlerCommentary}
-            className='input-comment1'
+            className="input-comment1"
             value={commentary}
             maxLength={maxLength}
           />{' '}
@@ -173,13 +187,13 @@ function Chat({ id }) {
             </div>
           ) : null}
           <button
-            className='publishButton'
-            type='button'
-            onClick={() => {
-              isSignedIn
-                ? handleSubmitCommentary()
-                : alert('Vous devez être connecté pour poster un commentaire');
-            }}
+            className="publishButton"
+            type="submit"
+            // onClick={() => {
+            //   isSignedIn
+            //     ? handleSubmitCommentary()
+            //     : alert('Vous devez être connecté pour poster un commentaire');
+            // }}
           >
             Publier
           </button>

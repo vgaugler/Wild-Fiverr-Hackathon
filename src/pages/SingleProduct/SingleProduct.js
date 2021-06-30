@@ -65,24 +65,24 @@ const SingleProduct = (props) => {
   return (
     <div>
       <div
-        className='product-center'
+        className="product-center"
         key={product.id}
         style={{ marginTop: '80px' }}
       >
-        <img className='prod-photo' src={product.image} alt={product.name} />
-        <section className='content-prod'>
-          <div class='title_name'>
+        <img className="prod-photo" src={product.image} alt={product.name} />
+        <section className="content-prod">
+          <div class="title_name">
             <h2>{product.name}</h2>
 
             <h5>@{product.nationality}</h5>
           </div>
-          <span class='fa fa-star review'></span>
-          <span class='fa fa-star review'></span>
-          <span class='fa fa-star review'></span>
-          <span class='fa fa-star review'></span>
-          <span class='fa fa-star-half-o review'></span>
+          <span class="fa fa-star review"></span>
+          <span class="fa fa-star review"></span>
+          <span class="fa fa-star review"></span>
+          <span class="fa fa-star review"></span>
+          <span class="fa fa-star-half-o review"></span>
           <p>60 Reviews</p>
-          <h5 className='price-prod' style={{ marginBottom: '40px' }}>
+          <h5 className="price-prod" style={{ marginBottom: '40px' }}>
             {product.activity}
           </h5>
           <div
@@ -94,7 +94,7 @@ const SingleProduct = (props) => {
           >
             {language.map((el) => (
               <p
-                className='tag'
+                className="tag"
                 style={{
                   backgroundColor: 'var(--primaryColor)',
                   color: 'white',
@@ -133,7 +133,7 @@ const SingleProduct = (props) => {
               </span>
             ))}
           </div>
-          <p className='description'>{product.description}</p>
+          <p className="description">{product.description}</p>
 
           <hr />
           <div
@@ -166,21 +166,21 @@ const SingleProduct = (props) => {
             </a>
           </div>
           {value && ids.id != 1 ? (
-            <button type='button' className='btnWait' disabled={true}>
+            <button type="button" className="btnWait" disabled={true}>
               Waiting for approbation
             </button>
           ) : value && id == 1 ? (
-            <button type='button' className='btnAlready' disabled={true}>
+            <button type="button" className="btnAlready" disabled={true}>
               Already in your program
             </button>
           ) : (
-            <button type='button' className='btnChoose' onClick={choose}>
+            <button type="button" className="btnChoose" onClick={choose}>
               Choose this mentor
             </button>
           )}
         </section>
       </div>
-      <Chat id={id} />
+      {/* <Chat id={id} /> */}
     </div>
   );
 };
