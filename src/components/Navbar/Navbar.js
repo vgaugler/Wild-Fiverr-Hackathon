@@ -43,10 +43,10 @@ export default function Navbar({ visible }) {
             <li>Home</li>
           </Link>
           <Link to='/products'>
-            <li>Mentor</li>
+            <li>Mentors</li>
           </Link>
           <Link to='/progress'>
-            <li>Ma progression</li>
+            <li>My Learning</li>
           </Link>
         </ul>
         <SignUp />
@@ -59,13 +59,14 @@ export default function Navbar({ visible }) {
           ) : (
             <div>
               <p
+                className='connect'
                 style={{
                   marginBottom: '0',
                   marginRight: '5px',
                   display: 'inline-flex',
                 }}
               >
-                First Connexion ?{' '}
+                First Connection ?{' '}
                 <div
                   className='signup'
                   style={{
