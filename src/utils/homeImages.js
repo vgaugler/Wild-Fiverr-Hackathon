@@ -46,7 +46,7 @@ const images = [
   },
   {
     url: 'images/portraits/Fiverr_15_David_Background_02846_GREEN (Large).jpg',
-    desc3: 'The miracle is not that we do this work, but that we are happy to do it.git add',
+    desc3: 'The miracle is not that we do this work, but that we are happy to do it.',
   },
 ];
 
