@@ -5,13 +5,14 @@ import Spinner from './components/Spinner/Spinner';
 import SingleProduct from './pages/SingleProduct/SingleProduct';
 import MentorProvider from './context/MentorContext';
 import { useWindowScroll } from 'react-use';
-
+import Progress from './pages/Progress/Progress';
+import ProgressDetails from './pages/ProgressDetails/ProgressDetails';
 const Cart = lazy(() => import('./pages/CartContent/CartItems'));
 const Homepage = lazy(() => import('./pages/Home/Home'));
 const Errorpage = lazy(() => import('./pages/Error/Error'));
 const Productlist = lazy(() => import('./pages/Products/ProductList'));
 const ProductDetails = lazy(() =>
-  import('./pages/SingleProduct/SingleProduct')
+  import('./pages/SingleProduct/SingleProduct'),
 );
 const ProductMusic = lazy(() => import('./pages/Products/ProductMusic'));
 
@@ -36,9 +37,10 @@ export default function App() {
             <Route exact path='/cart' component={Cart}></Route>
             <Route exact path='/products' component={Productlist}></Route>
             <Route exact path='/products/:id' component={SingleProduct} />
+             <Route exact path="/progress" component={Progress} />
+            <Route exact path="/progress/:id" component={ProgressDetails} />
             <Route exact path='/productmusic' component={ProductMusic}></Route>
             <Route exact path='*' component={Errorpage}></Route>
-            
           </Switch>
         </MentorProvider>
       </Suspense>
