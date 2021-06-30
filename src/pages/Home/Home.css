@@ -21,6 +21,7 @@ button:focus {
   justify-content: flex-start;
   flex-direction: column;
   background-color: #ecf0f1;
+  max-height: 90vh;
 }
 .content h1 {
   font-family: 'Macan';
@@ -102,13 +103,13 @@ div.swiper-button-prev,
   right: 50px;
   color: var(--mainBackground);
   margin: 20px;
-  width: 80%;
+  /* width: 80%; */
   /* mix-blend-mode: difference; */
 }
 .swiptext {
   font-size: 1.5em;
   font-family: 'Domaine';
-  width: 100%;
+  /* width: 100%; */
 }
 .swiper__text2 {
   position: absolute;
@@ -116,14 +117,14 @@ div.swiper-button-prev,
   left: 50px;
   color: var(--mainBackground);
   margin: 20px;
-  width: 80%;
+  /* width: 80%; */
 }
 .swiper__text3 {
   position: absolute;
   top: 50px;
   left: 50px;
   color: var(--mainBackground);
-  width: 80%;
+  /* width: 80%; */
   margin: 20px;
 }
 .swiptext:before {
@@ -147,7 +148,7 @@ div.swiper-button-prev,
   background-image: url(../../images/quote2.png);
   background-repeat: no-repeat;
   bottom: -21px;
-  right: -1.3em;
+  right: -2.3em;
   z-index: 1000;
 }
 @media (max-width: 1119px) {
@@ -179,6 +180,7 @@ div.swiper-button-prev,
 **/
 
 .accordion {
+  margin-top: -3px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 2px;
 }

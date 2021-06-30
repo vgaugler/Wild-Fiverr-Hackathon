@@ -78,9 +78,15 @@ a {
   display: flex;
   justify-content: center;
   transition: 0.6s;
+  margin-left: 20px;
 }
 .links li {
   padding: 10px;
+  mix-blend-mode: multiply;
+}
+
+.connect p {
+  mix-blend-mode: multiply;
 }
 
 .cart-icon {
@@ -142,7 +148,6 @@ nav svg {
 }
 .nav h1 {
   color: #3aafa9;
-  font-family: cursive;
 }
 .signup:hover {
   color: var(--primaryColor);
