@@ -29,48 +29,6 @@ const Progress = () => {
   return (
     <div style={{ marginTop: '80px' }}>
       <MentorCard mentorList={mentorList} />
-      {/* <div>
-        <table
-          style={{
-            width: '90vw',
-          }}
-        >
-          <thead>
-            <h2>History</h2>
-          </thead>
-          <tr>
-            <th>Mentor</th>
-            <th>Status</th>
-            <th>Starting date</th>
-            <th>End date</th>
-            <th>My rating</th>
-          </tr>
-
-          <tr>
-            <th>
-              <Link to="/progress/1">Jean-Mich-Mich</Link>
-            </th>
-            <th>Waiting</th>
-            <th></th>
-            <th></th>
-            <th></th>{' '}
-          </tr>
-          <tr>
-            <th>Jean-Mich-Mich</th>
-            <th>Active</th>
-            <th>20 June 2021</th>
-            <th>20 July 2021</th>
-            <th>4/5</th>
-          </tr>
-          <tr>
-            <th>Jean-Mich-Mich</th>
-            <th>Finished</th>
-            <th>20 May 2021</th>
-            <th>20 June 2021</th>
-            <th>4/5</th>
-          </tr>
-        </table>
-      </div> */}
     </div>
   );
 };
