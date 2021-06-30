@@ -18,10 +18,7 @@ export default function Navbar({ visible }) {
 
   useEffect(() => {
     if (isSignedIn) {
-      const mentor = firebase
-        .database()
-        .ref('mentor')
-        .child(firebase.auth().currentUser.uid);
+      const mentor = firebase.database().ref('mentor').child(firebase.auth().currentUser.uid);
 
       mentor.on('value', (snapshot) => {
         let previousList = snapshot.val();
@@ -56,10 +53,7 @@ export default function Navbar({ visible }) {
         <div className='user'>
           {' '}
           {isSignedIn ? (
-            <h4
-              className='pseudoTitle'
-              style={{ marginRight: '10px', marginBottom: '0' }}
-            >
+            <h4 className='pseudoTitle' style={{ marginRight: '10px', marginBottom: '0' }}>
               {name}
             </h4>
           ) : (
@@ -116,9 +110,6 @@ export default function Navbar({ visible }) {
             <i className='fa fa-graduation-cap fa-2x cart-icon'></i>{' '}
           </Link>
           <div className='nav-item'>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-              <path d='M16 6v2h2l2 12H0L2 8h2V6a6 6 0 1 1 12 0zm-2 0a4 4 0 1 0-8 0v2h8V6zM4 10v2h2v-2H4zm10 0v2h2v-2h-2z' />
-            </svg>
             <div className='amount-container'>
               <p className='total-amount'>{isSignedIn ? value.length : '0'}</p>
             </div>
