@@ -5,6 +5,7 @@ import Spinner from './components/Spinner/Spinner';
 import SingleProduct from './pages/SingleProduct/SingleProduct';
 import MentorProvider from './context/MentorContext';
 import { useWindowScroll } from 'react-use';
+
 const Cart = lazy(() => import('./pages/CartContent/CartItems'));
 const Homepage = lazy(() => import('./pages/Home/Home'));
 const Errorpage = lazy(() => import('./pages/Error/Error'));
@@ -12,7 +13,6 @@ const Productlist = lazy(() => import('./pages/Products/ProductList'));
 const ProductDetails = lazy(() =>
   import('./pages/SingleProduct/SingleProduct')
 );
-
 export default function App() {
   const { y: pageYOffset } = useWindowScroll();
   const [visible, setVisiblity] = useState(false);
