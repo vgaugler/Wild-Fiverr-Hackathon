@@ -1,0 +1,14 @@
+.boxGreen {
+  background-color: var(--primaryLightColor);
+  width: 50%;
+  border-radius: 50px;
+  padding: 26px;
+  margin: 20px;
+}
+.boxGrey {
+  background-color: var(--mainGrey);
+  width: 50%;
+  border-radius: 50px;
+  padding: 26px;
+  margin: 20px;
+}

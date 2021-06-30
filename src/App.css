@@ -123,6 +123,9 @@ img {
   font-weight: 400;
   letter-spacing: 2px;
 }
+.firebaseui-title {
+  font-family: 'Macan';
+}
 /* 
 ====== 
 Error
@@ -169,20 +172,6 @@ Error
   .cocktails-center {
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   }
-}
-
-.add-cart {
-  color: #fff;
-  background: var(--primaryColor);
-  padding: 10px;
-  margin-bottom: 10px;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
 }
 
 .prod-details button {
