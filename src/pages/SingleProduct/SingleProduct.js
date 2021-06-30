@@ -1,45 +1,48 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import firebase from '../../utils/firebaseConfig';
-
+import Chat from '../../components/Chat/Chat';
 import './SingleProduct.css';
+import { UserContext } from '../../context/UserProvider';
 
 const SingleProduct = (props) => {
+  const { isSignedIn } = useContext(UserContext);
   const [product, setProduct] = useState({});
   const id = props.match.params.id;
-  const { mentorAttribut } = props.location.mentorProps;
   const [language, setLanguage] = useState([]);
   const [availabel, setAvailabel] = useState();
   const [skills, setSkills] = useState([]);
   const [name, setName] = useState();
   const [value, setValue] = useState();
+  const [ids, setIds] = useState();
+
   useEffect(() => {
     const mentor = firebase.database().ref('user').child(`${id}`);
 
     mentor.on('value', (snapshot) => {
       setProduct(snapshot.val());
-
       setLanguage(snapshot.val().language);
-
       setSkills(snapshot.val().skill);
       setName(snapshot.val().name);
       setAvailabel(snapshot.val().disponibility);
-      console.log(mentorAttribut);
     });
   }, []);
 
   useEffect(() => {
-    const mentor = firebase
-      .database()
-      .ref('mentor')
-      .child(firebase.auth().currentUser.uid)
-      .child(`${id}`);
+    if (isSignedIn) {
+      const mentor = firebase
+        .database()
+        .ref('mentor')
+        .child(firebase.auth().currentUser.uid)
+        .child(`${id}`);
 
-    mentor.on('value', (snapshot) => {
-      let previousList = snapshot.val();
-      console.log(previousList);
-      setValue(!!previousList);
-    });
+      mentor.on('value', (snapshot) => {
+        let previousList = snapshot.val();
+        setIds(previousList);
+        setValue(!!previousList);
+      });
+    }
   }, []);
   function choose() {
     let count = availabel - 1;
@@ -162,14 +165,13 @@ const SingleProduct = (props) => {
               {availabel}/5
             </a>
           </div>
-          {value ? (
-            <button
-              type='button'
-              className='btnWait'
-              onClick={choose}
-              disabled={true}
-            >
+          {value && ids.id != 1 ? (
+            <button type='button' className='btnWait' disabled={true}>
               Waiting for approbation
+            </button>
+          ) : value && id == 1 ? (
+            <button type='button' className='btnAlready' disabled={true}>
+              Already in your program
             </button>
           ) : (
             <button type='button' className='btnChoose' onClick={choose}>
@@ -178,6 +180,7 @@ const SingleProduct = (props) => {
           )}
         </section>
       </div>
+      <Chat id={id} />
     </div>
   );
 };
