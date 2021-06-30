@@ -24,7 +24,7 @@ const ProductMusic = () => {
       for (let id in previousList) {
         list.push({ id, ...previousList[id] });
       }
-      let mentor = list.filter((el) => el.activity.includes('Sound'))
+      let mentor = list.filter((el) => el.activity.includes('Sound'));
       setMentorList(list);
       setFiltredMentor(mentor);
       console.log(mentorList);
@@ -33,9 +33,7 @@ const ProductMusic = () => {
   }, []);
 
   useEffect(() => {
-    let temp = mentorList.filter(
-      (el) => search && el.activity.toLowerCase().includes(search)
-    );
+    let temp = mentorList.filter((el) => search && el.activity.toLowerCase().includes(search));
     console.log(temp);
     setFiltredMentor(temp);
     if (!temp.length) {
@@ -62,15 +60,9 @@ const ProductMusic = () => {
               justifyContent: 'space-around',
             }}
           >
-            <h3 style={{ marginBottom: '25px', fontFamily: 'Macan' }}>
-              {' '}
-              15 mentor available
-            </h3>
+            <h3 style={{ marginBottom: '25px', fontFamily: 'Macan' }}> 15 mentors available</h3>
             <h1 style={{ margin: '0', fontFamily: 'Macan', fontSize: '4rem' }}>
-              Find{' '}
-              <span style={{ fontFamily: 'Domaine', fontSize: '4rem' }}>
-                your's
-              </span>
+              Find <span style={{ fontFamily: 'Domaine', fontSize: '4rem' }}>yours</span>
             </h1>
             <form
               style={{
@@ -98,8 +90,8 @@ const ProductMusic = () => {
           ></img>
         </div>
       </div>
-      <div className="titleSearch">
-      <h1>Music & Audio Mentor</h1>
+      <div className='titleSearch'>
+        <h1>Music & Audio Mentors</h1>
       </div>
       <MentorCard mentorList={filtredMentor} />
     </>
