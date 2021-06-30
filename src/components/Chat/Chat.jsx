@@ -134,45 +134,45 @@ function Chat({ id }) {
   };
 
   return (
-    <div>
-      <Scrollbars
-        className='boxComment'
-        style={{ width: '50%', height: '500px', position: 'relative' }}
-      >
-        {isSignedIn ? (
-          <div style={{ marginRight: '73px' }}>
-            {comment
-              ? comment.map((m) => (
-                  <div
-                    className={role.role == 'Newbie' ? 'boxGreen' : 'boxGrey'}
-                  >
-                    <div>
-                      {m.id == firebase.auth().currentUser.uid ? 'Vous' : null}{' '}
-                    </div>
-                    <div>{m.commentary}</div>
-                    <div>{m.date}</div>
+    <Scrollbars
+      className='boxComment'
+      style={{
+        width: '50%',
+        height: '500px',
+        position: 'relative',
+        margin: '0 10px 0 10px',
+      }}
+    >
+      {isSignedIn ? (
+        <div style={{ marginRight: '73px' }}>
+          {comment
+            ? comment.map((m) => (
+                <div className={role.role == 'Newbie' ? 'boxGreen' : 'boxGrey'}>
+                  <div>
+                    {m.id == firebase.auth().currentUser.uid ? 'Vous' : null}{' '}
                   </div>
-                ))
-              : null}
-          </div>
-        ) : null}
+                  <div>{m.commentary}</div>
+                  <div>{m.date}</div>
+                </div>
+              ))
+            : null}
+        </div>
+      ) : null}
 
-        {isSignedIn ? (
-          <div style={{ marginLeft: '73px' }}>
-            {commentMentor
-              ? commentMentor.map((m) => (
-                  <div className={commentMentor ? 'boxGrey' : 'boxGreen'}>
-                    <div>
-                      {m.id == firebase.auth().currentUser.uid
-                        ? 'Vous'
-                        : m.name}{' '}
-                    </div>
-                    <div>{m.commentary}</div>
-                    <div>{m.date}</div>
+      {isSignedIn ? (
+        <div style={{ marginLeft: '73px' }}>
+          {commentMentor
+            ? commentMentor.map((m) => (
+                <div className={commentMentor ? 'boxGrey' : 'boxGreen'}>
+                  <div>
+                    {m.id == firebase.auth().currentUser.uid ? 'Vous' : m.name}{' '}
                   </div>
-                ))
-              : null}
-          </div>
+                  <div>{m.commentary}</div>
+                  <div>{m.date}</div>
+                </div>
+              ))
+            : null}
+        </div>
       ) : null}
       <div>
         <form
@@ -183,10 +183,10 @@ function Chat({ id }) {
           }}
         >
           <input
-            type="text"
-            placeholder="votre commentaire"
+            type='text'
+            placeholder='votre commentaire'
             onChange={myChangeHandlerCommentary}
-            className="input-comment1"
+            className='input-comment1'
             value={commentary}
             maxLength={maxLength}
           />{' '}
@@ -196,8 +196,8 @@ function Chat({ id }) {
             </div>
           ) : null}
           <button
-            className="publishButton"
-            type="submit"
+            className='publishButton'
+            type='submit'
             // onClick={() => {
             //   isSignedIn
             //     ? handleSubmitCommentary()
@@ -208,8 +208,7 @@ function Chat({ id }) {
           </button>
         </form>
       </div>
-      </Scrollbars>
-    </div>
+    </Scrollbars>
   );
 }
 
