@@ -1,6 +1,7 @@
 import React from 'react';
 import './Section2.css';
 
+
 function Section2() {
   return (
     <div className='main-categories lohp-row max-width-container'>
@@ -61,7 +62,7 @@ function Section2() {
         <li>
           <a
             className='a_section2'
-            href='/categories/music-audio?source=hplo_cat_sec&amp;pos=5'
+            href='/productmusic'
           >
             <img
               src='https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/music-audio.320af20.svg'
@@ -95,19 +96,6 @@ function Section2() {
               loading='lazy'
             />
             Business
-          </a>
-        </li>
-        <li>
-          <a
-            className='a_section2'
-            href='/categories/lifestyle?source=hplo_cat_sec&amp;pos=8'
-          >
-            <img
-              src='https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/lifestyle.745b575.svg'
-              alt='Lifestyle'
-              loading='lazy'
-            />
-            Lifestyle
           </a>
         </li>
         <li>
