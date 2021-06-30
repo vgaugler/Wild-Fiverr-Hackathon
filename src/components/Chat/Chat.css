@@ -1,16 +1,15 @@
 .boxGreen {
   background-color: var(--primaryLightColor);
-
   border-radius: 50px;
   padding: 26px;
   margin: 20px;
+  margin-right: 81px;
 }
 .boxGrey {
   background-color: var(--mainGrey);
-
   border-radius: 50px;
   padding: 26px;
-  margin: 20px;
+  margin-left: 81px;
 }
 .boxComment {
   width: 50%;
@@ -27,6 +26,7 @@
   outline: none;
   border-radius: 15px;
   padding: 15px;
+  margin-top: 15px;
 }
 .publishButton {
   font-weight: bold;
