@@ -53,6 +53,16 @@ span {
   background: transparent;
   border: 2px solid var(--primaryColor);
 }
+.btnAlready {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: var(--primaryDarkColor);
+  border: none;
+  cursor: pointer;
+  border: 2px solid var(--primaryDarkColor);
+  margin: 20px auto;
+}
 .tag:hover {
   background-color: #1dbf734f;
   color: var(--primaryDarkColor);

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import Logo from '../../images/logo.jpg';
+import Logo from '../../images/fiversenpai.png';
 import { BoxLogContext } from '../../context/LogProvider';
 import { UserContext } from '../../context/UserProvider';
 import { BlurContext } from '../../context/BlurProvider';
@@ -36,7 +36,7 @@ export default function Navbar({ visible }) {
   return (
     <div className={blurStatus ? 'nav blur' : 'nav'}>
       <div className={visible ? 'nav-container-fixed' : 'nav-container'}>
-        <img src={Logo} alt='' style={{ width: '150px', height: 'auto' }}></img>
+        <img src={Logo} alt='' style={{ width: '250px', height: 'auto' }}></img>
 
         <ul className='links'>
           <Link to='/'>
