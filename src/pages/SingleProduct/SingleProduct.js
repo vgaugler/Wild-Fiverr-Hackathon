@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect, useContext } from 'react';
 import firebase from '../../utils/firebaseConfig';
-import Chat from '../../components/Chat/Chat';
 import './SingleProduct.css';
 import { UserContext } from '../../context/UserProvider';
 
@@ -180,7 +179,6 @@ const SingleProduct = (props) => {
           )}
         </section>
       </div>
-      {/* <Chat id={id} /> */}
     </div>
   );
 };
