@@ -84,7 +84,7 @@ function SignUp() {
       {isSignedIn ? (
         <div>
           <h2 className='titleBoxLog' style={{ marginBottom: '2.5rem' }}>
-            Bonjour {firebase.auth().currentUser.displayName}
+            Hello {firebase.auth().currentUser.displayName}
           </h2>
           {value ? (
             <div>
