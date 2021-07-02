@@ -7,7 +7,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import './Chat.css';
 import MentorCard from '../MentorCard/MentorCard';
 
-function Chat({ id, name }) {
+function ChatMentor({ id, name }) {
   const { isSignedIn } = useContext(UserContext);
   const [commentary, setCommentary] = useState('');
   //user comment
@@ -27,8 +27,8 @@ function Chat({ id, name }) {
       const comment = firebase
         .database()
         .ref('message')
-        .child(firebase.auth().currentUser.uid)
-        .child(name);
+        .child(firebase.auth().currentUser.displayName)
+        .child(id);
 
       comment.on('value', (snapshot) => {
         let previousList = snapshot.val();
@@ -48,8 +48,8 @@ function Chat({ id, name }) {
       const comment = firebase
         .database()
         .ref('message')
-        .child(name)
-        .child(firebase.auth().currentUser.uid);
+        .child(id)
+        .child(firebase.auth().currentUser.displayName);
 
       comment.on('value', (snapshot) => {
         let previousList = snapshot.val();
@@ -134,8 +134,8 @@ function Chat({ id, name }) {
     firebase
       .database()
       .ref('message')
-      .child(firebase.auth().currentUser.uid)
-      .child(name)
+      .child(firebase.auth().currentUser.displayName)
+      .child(id)
       .child(date2)
       .set(comment);
 
@@ -219,4 +219,4 @@ function Chat({ id, name }) {
   );
 }
 
-export default Chat;
+export default ChatMentor;

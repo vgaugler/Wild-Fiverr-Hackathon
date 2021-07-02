@@ -8,7 +8,7 @@ const MentorCard = ({ mentorList }) => {
   const history = useHistory().location.pathname;
   return (
     <>
-      <div className="cocktails-center">
+      <div className='cocktails-center'>
         {mentorList &&
           mentorList.map((product, i) => {
             const { id, image, name, activity, language, skill } = product;
@@ -16,16 +16,16 @@ const MentorCard = ({ mentorList }) => {
               <div>
                 <article
                   key={id}
-                  className="cocktail"
+                  className='cocktail'
                   style={{ position: 'relative' }}
                 >
-                  <div className="img-container">
+                  <div className='img-container'>
                     <img src={image} alt={name} />
                   </div>
-                  <div className="cocktail-footer">
-                    <div className="product">
+                  <div className='cocktail-footer'>
+                    <div className='product'>
                       <h4>{name}</h4>
-                      <h4 className="price">{activity}</h4>
+                      <h4 className='price'>{activity}</h4>
                     </div>
                     <div
                       style={{
@@ -38,7 +38,7 @@ const MentorCard = ({ mentorList }) => {
                     >
                       {language.map((m) => (
                         <div
-                          className="tag"
+                          className='tag'
                           style={{
                             backgroundColor: '#1dbf7361',
                             color: 'white',
@@ -63,7 +63,7 @@ const MentorCard = ({ mentorList }) => {
                     >
                       {skill.map((m) => (
                         <div
-                          className="tag2"
+                          className='tag2'
                           style={{
                             border: '1px solid hsla(0, 0%, 46.7%, 0.65)',
                             color: 'var(--primaryDarkColor)',
@@ -82,16 +82,16 @@ const MentorCard = ({ mentorList }) => {
                     <Link
                       to={
                         history === '/products'
-                          ? `/products/${id}`
+                          ? `/products/${id}/${name}`
                           : {
-                              pathname: `/progress/${id}`,
+                              pathname: `/progress/${id}/${name}`,
                               mentorProps: {
                                 id: product.id,
                                 name: product.name,
                               },
                             }
                       }
-                      className="add-cart"
+                      className='add-cart'
                     >
                       {history === '/progress' ? 'Chat now' : 'View'}
                     </Link>
@@ -99,7 +99,10 @@ const MentorCard = ({ mentorList }) => {
                 </article>{' '}
                 {history === '/progress' ? (
                   <ProgressBar
-                    completed={product.name === 'Fedor' ? 30 : 100}
+                    className={
+                      product.name === 'Fedor' ? 'progressFedor' : 'progress'
+                    }
+                    completed={product.name === 'Fedor' ? 30 : 0}
                   />
                 ) : null}
               </div>

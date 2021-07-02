@@ -9,6 +9,7 @@
   background-color: var(--mainGrey);
   border-radius: 50px;
   padding: 26px;
+  margin: 20px;
   margin-left: 81px;
 }
 .boxComment {
@@ -16,7 +17,7 @@
   margin: 0 auto;
   overflow: scroll;
   display: flex;
-  height: 500px;
+  height: 100vh;
   flex-direction: column;
   padding: 42px;
 }
@@ -24,7 +25,8 @@
   width: 98%;
   height: 65px;
   outline: none;
-  border-radius: 15px;
+  border: none;
+  border-top: 2px solid var(--pinkDarkColor);
   padding: 15px;
   margin-top: 15px;
 }

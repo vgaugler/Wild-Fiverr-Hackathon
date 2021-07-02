@@ -22,10 +22,10 @@ const Progress = () => {
   }, []);
 
   return (
-    <div style={{ marginTop: '80px' }}>
-      <div style={{ marginTop: '80px' }}>
+    <div>
+      <div style={{ marginTop: '130px' }}>
         <div
-          className="heading-center"
+          className='heading-center'
           style={{
             backgroundColor: '#0D084D',
             display: 'flex',
@@ -42,20 +42,39 @@ const Progress = () => {
               justifyContent: 'space-around',
             }}
           >
-            <h3 style={{ marginBottom: '25px', fontFamily: 'Macan' }}>
+            <h3
+              style={{
+                marginBottom: '25px',
+                fontFamily: 'Macan',
+                color: 'white',
+              }}
+            >
               {mentorList.length} mentor available
             </h3>
-            <h1 style={{ margin: '0', fontFamily: 'Macan', fontSize: '4rem' }}>
+            <h1
+              style={{
+                margin: '0',
+                fontFamily: 'Macan',
+                fontSize: '4rem',
+                color: 'white',
+              }}
+            >
               Your{' '}
-              <span style={{ fontFamily: 'Domaine', fontSize: '4rem' }}>
-                mentor's
+              <span
+                style={{
+                  fontFamily: 'Domaine',
+                  fontSize: '4rem',
+                  color: 'white',
+                }}
+              >
+                mentors
               </span>
             </h1>
           </div>
           <img
-            src="images/prof.jpeg"
-            alt=""
-            style={{ width: '500px', height: 'auto' }}
+            src='images/prof.jpeg'
+            alt=''
+            style={{ width: '353px', objectFit: 'cover' }}
           ></img>
         </div>
       </div>
