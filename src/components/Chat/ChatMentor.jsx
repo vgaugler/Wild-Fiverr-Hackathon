@@ -164,7 +164,7 @@ function ChatMentor({ id, name }) {
                   }
                 >
                   <h5>
-                    {m.id == firebase.auth().currentUser.uid ? 'Vous' : m.name}{' '}
+                    {m.id == firebase.auth().currentUser.uid ? 'You' : m.name}{' '}
                   </h5>
                   <div>{m.commentary}</div>
                   <div
