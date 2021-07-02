@@ -20,3 +20,6 @@
   font-size: 13px;
   border: 2px solid var(--primaryColor);
 }
+.progress div div {
+  width: 5% !important;
+}

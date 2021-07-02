@@ -9,13 +9,14 @@ import { width } from 'dom7';
 
 const ProgressionDetails = () => {
   const { id } = useParams();
+  const { name } = useParams();
   console.log(id);
   const { isSignedIn } = useContext(UserContext);
   const [product, setProduct] = useState({});
   const [language, setLanguage] = useState([]);
   const [availabel, setAvailabel] = useState();
   const [skills, setSkills] = useState([]);
-  const [name, setName] = useState();
+  const [namo, setName] = useState();
   const [value, setValue] = useState();
   const [ids, setIds] = useState();
 
@@ -50,7 +51,7 @@ const ProgressionDetails = () => {
     let count = availabel - 1;
     setAvailabel(count);
     const mentor = {
-      name: name,
+      name: namo,
       id: `${id}`,
       skill: skills,
       language: language,
@@ -71,13 +72,29 @@ const ProgressionDetails = () => {
         </h1>
         <img src={Ban} style={{ width: '500px', height: 'auto' }}></img>
       </div>
-      <div key={product.id} className='boxProgress'>
+      <div
+        key={product.id}
+        className='boxProgress'
+        style={{ position: 'relative' }}
+      >
+        <h1
+          style={{
+            position: 'absolute',
+            color: 'white',
+            fontFamily: 'Macan',
+            top: '15px',
+            left: '36%',
+            fontSize: '15px',
+          }}
+        >
+          Chat with {product.name}{' '}
+        </h1>
         <img
           src={product.image}
           alt={product.name}
-          style={{ width: '50%', height: 'auto' }}
+          style={{ width: '50%', objectFit: 'cover' }}
         />{' '}
-        <Chat id={id} />
+        <Chat id={id} name={name} />
       </div>
     </div>
   );

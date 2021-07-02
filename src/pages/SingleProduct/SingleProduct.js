@@ -9,6 +9,7 @@ const SingleProduct = (props) => {
   const { isSignedIn } = useContext(UserContext);
   const [product, setProduct] = useState({});
   const id = props.match.params.id;
+  const namo = props.match.params.name;
   const [language, setLanguage] = useState([]);
   const [availabel, setAvailabel] = useState();
   const [skills, setSkills] = useState([]);
@@ -36,7 +37,7 @@ const SingleProduct = (props) => {
         .database()
         .ref('mentor')
         .child(firebase.auth().currentUser.uid)
-        .child(`${id}`);
+        .child(namo);
 
       mentor.on('value', (snapshot) => {
         let previousList = snapshot.val();
@@ -44,24 +45,46 @@ const SingleProduct = (props) => {
         setValue(!!previousList);
       });
     }
-  }, []);
+  }, [name]);
   function choose() {
     let count = availabel - 1;
     setAvailabel(count);
     const mentor = {
+      userId: firebase.auth().currentUser.uid,
       name: name,
       id: `${id}`,
       skill: skills,
       language: language,
       image: image,
+      abo: firebase.auth().currentUser.displayName,
+      abomail: firebase.auth().currentUser.email,
+      photo: firebase.auth().currentUser.photoURL,
+    };
+
+    firebase
+      .database()
+      .ref('mentor')
+      .child(name)
+      .child(firebase.auth().currentUser.uid)
+      .set(mentor);
+    const abo = {
+      userId: firebase.auth().currentUser.uid,
+      name: name,
+      id: `${id}`,
+      skill: skills,
+      language: language,
+      image: image,
+      abo: firebase.auth().currentUser.displayName,
+      abomail: firebase.auth().currentUser.email,
+      photo: firebase.auth().currentUser.photoURL,
     };
 
     firebase
       .database()
       .ref('mentor')
       .child(firebase.auth().currentUser.uid)
-      .child(`${id}`)
-      .set(mentor);
+      .child(name)
+      .set(abo);
   }
 
   return (

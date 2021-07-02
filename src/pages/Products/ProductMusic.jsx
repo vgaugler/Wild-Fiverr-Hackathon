@@ -33,7 +33,9 @@ const ProductMusic = () => {
   }, []);
 
   useEffect(() => {
-    let temp = mentorList.filter((el) => search && el.activity.toLowerCase().includes(search));
+    let temp = mentorList.filter(
+      (el) => search && el.activity.toLowerCase().includes(search)
+    );
     console.log(temp);
     setFiltredMentor(temp);
     if (!temp.length) {
@@ -43,7 +45,7 @@ const ProductMusic = () => {
 
   return (
     <>
-      <div style={{ marginTop: '80px' }}>
+      <div style={{ marginTop: '130px' }}>
         <div
           className='heading-center'
           style={{
@@ -60,9 +62,15 @@ const ProductMusic = () => {
               justifyContent: 'space-around',
             }}
           >
-            <h3 style={{ marginBottom: '25px', fontFamily: 'Macan' }}> 15 mentors available</h3>
+            <h3 style={{ marginBottom: '25px', fontFamily: 'Macan' }}>
+              {' '}
+              15 mentors available
+            </h3>
             <h1 style={{ margin: '0', fontFamily: 'Macan', fontSize: '4rem' }}>
-              Find <span style={{ fontFamily: 'Domaine', fontSize: '4rem' }}>yours</span>
+              Find{' '}
+              <span style={{ fontFamily: 'Domaine', fontSize: '4rem' }}>
+                yours
+              </span>
             </h1>
             <form
               style={{
