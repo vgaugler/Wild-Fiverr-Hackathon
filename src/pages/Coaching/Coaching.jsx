@@ -92,7 +92,7 @@ function Coaching() {
                   style={{ position: 'relative' }}
                 >
                   <div className='img-container'>
-                    <img src={m.photo} alt={m.abo} />
+                    <img src={m.image} alt={m.abo} />
                   </div>
                   <div className='cocktail-footer'>
                     <div className='product'>

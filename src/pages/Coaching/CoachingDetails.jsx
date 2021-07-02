@@ -1,11 +1,26 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react/cjs/react.development';
 import Chat from '../../components/Chat/Chat';
 import ChatMentor from '../../components/Chat/ChatMentor';
 import Ban from '../../images/edd.png';
+import firebase from '../../utils/firebaseConfig';
 
 function CoachingDetails() {
   const { id } = useParams();
+  const [img, setImg] = useState();
+
+  useEffect(() => {
+    const mentor = firebase
+      .database()
+      .ref('mentor')
+      .child(firebase.auth().currentUser.displayName)
+      .child(id);
+
+    mentor.on('value', (snapshot) => {
+      setImg(snapshot.val().image);
+    });
+  }, []);
   return (
     <div style={{ marginTop: '80px' }}>
       <div className='boxHead'>
@@ -32,8 +47,8 @@ function CoachingDetails() {
           {/* Chat with {product.name}{' '} */}
         </h1>
         <img
-          // src={product.image}
-          // alt={product.name}
+          src={img}
+          alt='user'
           style={{ width: '50%', objectFit: 'cover' }}
         />{' '}
         <ChatMentor id={id} />
