@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
@@ -32,10 +33,14 @@ const items = [
     heading: 'Get help finding your ideal niche',
     content: (
       <>
-        <h3>You're amazing at that thing you do... and we know you want to share it</h3>
+        <h3>
+          You're amazing at that thing you do... and we know you want to share
+          it
+        </h3>
         <div>
-          Your mentor will help you identify gaps in the market, teach you how to adapt your gig
-          offers and guide you in amplifying the reach of your skillset.
+          Your mentor will help you identify gaps in the market, teach you how
+          to adapt your gig offers and guide you in amplifying the reach of your
+          skillset.
         </div>
       </>
     ),
@@ -45,10 +50,14 @@ const items = [
     heading: 'Learn how to precisely pitch your gigs',
     content: (
       <>
-        <h3>Enabling your focus on your talents is the bottom line of all our efforts</h3>
+        <h3>
+          Enabling your focus on your talents is the bottom line of all our
+          efforts
+        </h3>
         <div>
-          The start is always a difficult time. With seasoned advice on how to interact and
-          communicate with buyers, you'll break into the market that much quicker.
+          The start is always a difficult time. With seasoned advice on how to
+          interact and communicate with buyers, you'll break into the market
+          that much quicker.
         </div>
       </>
     ),
@@ -60,8 +69,9 @@ const items = [
       <>
         <h3>The Community that Knows Itself, Grows Itself</h3>
         <div>
-          This is so much more than chasing the next gig ; we're building the Future of Work, and
-          solidarity in our community of sellers is a core part of this.
+          This is so much more than chasing the next gig ; we're building the
+          Future of Work, and solidarity in our community of sellers is a core
+          part of this.
         </div>
       </>
     ),
@@ -75,12 +85,12 @@ export default function Home() {
         <div className='content'>
           <div className='head'>
             <h1>
-              Find the perfect <span style={{ color: '#00732e' }}>mentor</span> for your freelance
-              growth
+              Find the perfect <span style={{ color: '#00732e' }}>mentor</span>{' '}
+              for your freelance growth
             </h1>
             <div>
-              Fiverr Senpai - grow your business with expert know-how and support from pillars of
-              the community
+              Fiverr Senpai - grow your business with expert know-how and
+              support from pillars of the community
             </div>
 
             <Link to='/products'>
@@ -119,29 +129,46 @@ export default function Home() {
           // navigation
         >
           {images.map((image) => (
-            <SwiperSlide>
-              <img className='swiper__image' src={image.url} alt={image.desc} />
+            <SwiperSlide key={image.id}>
+              <img
+                className='swiper__image'
+                src={image.url}
+                alt={image.desc}
+                key={image.id}
+              />
               {image.desc ? (
-                <p className='swiper__text'>
+                <div className='swiper__text' key={image.id}>
                   {' '}
-                  <div style={{ position: 'relative' }} className='swiptext'>
+                  <div
+                    style={{ position: 'relative' }}
+                    className='swiptext'
+                    key={image.id}
+                  >
                     {image.desc}
                   </div>
-                </p>
+                </div>
               ) : image.desc2 ? (
-                <p className='swiper__text2'>
+                <div className='swiper__text2' key={image.id}>
                   {' '}
-                  <div style={{ position: 'relative' }} className='swiptext'>
+                  <div
+                    style={{ position: 'relative' }}
+                    className='swiptext'
+                    key={image.id}
+                  >
                     {image.desc2}
                   </div>
-                </p>
+                </div>
               ) : image.desc3 ? (
-                <p className='swiper__text3'>
+                <div className='swiper__text3' key={image.id}>
                   {' '}
-                  <div style={{ position: 'relative' }} className='swiptext'>
+                  <div
+                    style={{ position: 'relative' }}
+                    className='swiptext'
+                    key={image.id}
+                  >
                     {image.desc3}
                   </div>
-                </p>
+                </div>
               ) : null}
             </SwiperSlide>
           ))}

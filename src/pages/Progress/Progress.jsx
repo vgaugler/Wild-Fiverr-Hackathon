@@ -1,25 +1,27 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState, useContext } from 'react';
 import MentorCard from '../../components/MentorCard/MentorCard';
+import { UserContext } from '../../context/UserProvider';
 import firebase from '../../utils/firebaseConfig';
 const Progress = () => {
   const [mentorList, setMentorList] = useState([]);
-
+  const { isSignedIn } = useContext(UserContext);
   useEffect(() => {
-    const mentor = firebase
-      .database()
-      .ref('mentor')
-      .child(firebase.auth().currentUser.uid);
-    mentor.on('value', (snapshot) => {
-      let previousList = snapshot.val();
-      let list = [];
-      for (let id in previousList) {
-        list.push({ id, ...previousList[id] });
-      }
-      setMentorList(list);
-      console.log(mentorList);
-    });
-  }, []);
+    if (isSignedIn) {
+      const mentor = firebase
+        .database()
+        .ref('mentor')
+        .child(firebase.auth().currentUser.uid);
+      mentor.on('value', (snapshot) => {
+        let previousList = snapshot.val();
+        let list = [];
+        for (let id in previousList) {
+          list.push({ id, ...previousList[id] });
+        }
+        setMentorList(list);
+      });
+    }
+  }, [isSignedIn]);
 
   return (
     <div>
@@ -27,7 +29,7 @@ const Progress = () => {
         <div
           className='heading-center'
           style={{
-            backgroundColor: '#0D084D',
+            backgroundColor: '#584AFF',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-around',
@@ -72,9 +74,9 @@ const Progress = () => {
             </h1>
           </div>
           <img
-            src='images/prof.jpeg'
+            src='/images/banmentor.jpg'
             alt=''
-            style={{ width: '353px', objectFit: 'cover' }}
+            style={{ width: '50%', height: 'auto', objectFit: 'cover' }}
           ></img>
         </div>
       </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable eqeqeq */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext, useEffect } from 'react';
@@ -5,7 +6,6 @@ import { UserContext } from '../../context/UserProvider';
 import firebase from '../../utils/firebaseConfig';
 import { Scrollbars } from 'react-custom-scrollbars';
 import './Chat.css';
-import MentorCard from '../MentorCard/MentorCard';
 
 function ChatMentor({ id, name }) {
   const { isSignedIn } = useContext(UserContext);
@@ -32,14 +32,13 @@ function ChatMentor({ id, name }) {
 
       comment.on('value', (snapshot) => {
         let previousList = snapshot.val();
-        console.log(previousList);
+
         let list = [];
         for (let id in previousList) {
           list.push({ id, ...previousList[id] });
         }
-        console.log(list);
+
         setComment(list);
-        console.log(comment);
       });
     }
   }, []);
@@ -53,40 +52,15 @@ function ChatMentor({ id, name }) {
 
       comment.on('value', (snapshot) => {
         let previousList = snapshot.val();
-        console.log(previousList);
         let list = [];
         for (let id in previousList) {
           list.push({ id, ...previousList[id] });
         }
-        console.log(list);
+
         setCommentMentor(list);
-        console.log(commentMentor);
-        console.log(allComment);
       });
     }
   }, []);
-
-  // useEffect(() => {
-  //   if (isSignedIn) {
-  //     const comment = firebase
-  //       .database()
-  //       .ref('message')
-  //       .child(firebase.auth().currentUser.uid)
-  //       .child(id);
-
-  //     comment.on('value', (snapshot) => {
-  //       let previousList = snapshot.val();
-  //       console.log(previousList);
-  //       let list = [];
-  //       for (let id in previousList) {
-  //         list.push({ id, ...previousList[id] });
-  //       }
-  //       console.log(list);
-  //       setComment(list);
-  //       console.log(comment);
-  //     });
-  //   }
-  // }, []);
 
   useEffect(() => {
     if (isSignedIn) {
@@ -96,7 +70,7 @@ function ChatMentor({ id, name }) {
         .child(firebase.auth().currentUser.uid);
       comment.on('value', (snapshot) => {
         let previousList = snapshot.val();
-        console.log(previousList);
+
         setRole(previousList);
       });
     }
@@ -108,7 +82,6 @@ function ChatMentor({ id, name }) {
       a.timeStamp < b.timeStamp ? -1 : a.timeStamp > b.timeStamp ? 1 : 0
     );
     setAllComment(temp2);
-    console.log(allComment);
   }, [comment, commentMentor]);
 
   const handleSubmitCommentary = (e) => {

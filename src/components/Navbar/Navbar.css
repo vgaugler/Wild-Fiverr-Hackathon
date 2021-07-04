@@ -84,7 +84,9 @@ a {
   padding: 10px;
   mix-blend-mode: multiply;
 }
-
+.liactive {
+  color: blue;
+}
 .connect p {
   mix-blend-mode: multiply;
 }

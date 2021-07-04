@@ -1,7 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react/cjs/react.development';
-import Chat from '../../components/Chat/Chat';
 import ChatMentor from '../../components/Chat/ChatMentor';
 import Ban from '../../images/edd.png';
 import firebase from '../../utils/firebaseConfig';
@@ -27,7 +27,7 @@ function CoachingDetails() {
         <h1 style={{ textAlign: 'end', margin: '60px', fontSize: '3rem' }}>
           Just Chatting
         </h1>
-        <img src={Ban} style={{ width: '500px', height: 'auto' }}></img>
+        <img src={Ban} style={{ width: '500px', height: 'auto' }} alt=''></img>
       </div>
       <div
         // key={product.id}

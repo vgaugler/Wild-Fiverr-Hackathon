@@ -62,7 +62,6 @@ function SignUp() {
           .child(firebase.auth().currentUser.uid);
         roleAssign.on('value', (snapshot) => {
           let previousList = snapshot.val();
-          console.log(previousList);
           setValue(!!previousList);
         });
         firebase
