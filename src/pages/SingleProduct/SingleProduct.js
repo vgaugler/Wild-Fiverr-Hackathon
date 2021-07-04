@@ -6,6 +6,9 @@ import firebase from '../../utils/firebaseConfig';
 import './SingleProduct.css';
 import { UserContext } from '../../context/UserProvider';
 import { useAlert } from 'react-alert';
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
+
 const SingleProduct = (props) => {
   const { isSignedIn } = useContext(UserContext);
   const [product, setProduct] = useState({});
@@ -103,12 +106,16 @@ const SingleProduct = (props) => {
 
             <h5>@{product.nationality}</h5>
           </div>
-          <span className='fa fa-star review'></span>
-          <span className='fa fa-star review'></span>
-          <span className='fa fa-star review'></span>
-          <span className='fa fa-star review'></span>
-          <span className='fa fa-star-half-o review'></span>
-          <p>60 Reviews</p>
+          <Box
+            component='fieldset'
+            mb={3}
+            borderColor='transparent'
+            marginBottom='0'
+            padding='0'
+          >
+            <Rating name='read-only' value={product.value} readOnly />
+          </Box>
+          <p>{product.reviews} reviews</p>
           <h5 className='price-prod' style={{ marginBottom: '40px' }}>
             {product.activity}
           </h5>
