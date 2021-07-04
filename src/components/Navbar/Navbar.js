@@ -1,6 +1,6 @@
 /* eslint-disable eqeqeq */
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, NavLink } from 'react-router-dom';
 import './Navbar.css';
 import Logo from '../../images/fiversenpai.png';
 import { BoxLogContext } from '../../context/LogProvider';
@@ -59,43 +59,81 @@ export default function Navbar({ visible }) {
         <img src={Logo} alt='' style={{ width: '250px', height: 'auto' }}></img>
         {isSignedIn === false ? (
           <ul className='links'>
-            <Link to='/'>
-              <li>Home</li>
-            </Link>
-
-            <Link to='/products'>
-              <li>Mentors</li>
-            </Link>
-            <Link
+            <NavLink
               to='/'
+              className='main-nav'
+              activeClassName='main-nav-active'
+              exact={true}
+            >
+              <li>Home</li>
+            </NavLink>
+
+            <NavLink
+              to='/products'
+              className='main-nav'
+              activeClassName='main-nav-active'
+              exact={true}
+            >
+              <li>Mentors</li>
+            </NavLink>
+            <NavLink
+              to='/'
+              className='main-nav'
+              activeClassName='main-nav-active'
+              exact={true}
               onClick={() =>
                 alert.show('You must be logged in to see your program')
               }
             >
               <li>My Learning</li>
-            </Link>
+            </NavLink>
           </ul>
         ) : role && role.role === 'Expert' ? (
           <ul className='links'>
-            <Link to='/'>
+            <NavLink
+              to='/'
+              className='main-nav'
+              activeClassName='main-nav-active'
+              exact={true}
+            >
               <li>Home</li>
-            </Link>
-            <Link to='/coaching'>
+            </NavLink>
+            <NavLink
+              to='/coaching'
+              className='main-nav'
+              activeClassName='main-nav-active'
+              exact={true}
+            >
               <li>My newbies</li>
-            </Link>{' '}
+            </NavLink>{' '}
           </ul>
         ) : (
           <ul className='links'>
-            <Link to='/'>
+            <NavLink
+              to='/'
+              className='main-nav'
+              activeClassName='main-nav-active'
+              exact={true}
+            >
               <li>Home</li>
-            </Link>
+            </NavLink>
 
-            <Link to='/products'>
+            <NavLink
+              to='/products'
+              className='main-nav'
+              activeClassName='main-nav-active'
+              exact={true}
+            >
               <li>Mentors</li>
-            </Link>
-            <Link to='/progress'>
+            </NavLink>
+            <NavLink
+              to='/progress'
+              className='main-nav'
+              activeClassName='main-nav-active'
+              exact={true}
+            >
               <li>My Learning</li>
-            </Link>
+            </NavLink>
           </ul>
         )}
 
