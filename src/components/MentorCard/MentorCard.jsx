@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import ProgressBar from '@ramonak/react-progress-bar';
-
 import './MentorCard.css';
+import DeleteMentor from './DeleteMentor';
 
 const MentorCard = ({ mentorList }) => {
   const history = useHistory().location.pathname;
-  const [remaining, setRemaining] = useState();
+
   return (
     <>
       <div className='cocktails-center'>
@@ -22,6 +22,9 @@ const MentorCard = ({ mentorList }) => {
                 >
                   <div className='img-container'>
                     <img src={image} alt={name} />
+                    {history === '/progress' ? (
+                      <DeleteMentor product={product} />
+                    ) : null}
                   </div>
                   <div className='cocktail-footer'>
                     <div className='product'>
@@ -39,6 +42,7 @@ const MentorCard = ({ mentorList }) => {
                     >
                       {language.map((m) => (
                         <div
+                          key={m.id}
                           className='tag'
                           style={{
                             backgroundColor: '#1dbf7361',
@@ -64,6 +68,7 @@ const MentorCard = ({ mentorList }) => {
                     >
                       {skill.map((m) => (
                         <div
+                          key={m.id}
                           className='tag2'
                           style={{
                             border: '1px solid hsla(0, 0%, 46.7%, 0.65)',
