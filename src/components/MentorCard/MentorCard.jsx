@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import ProgressBar from '@ramonak/react-progress-bar';
 
@@ -6,6 +6,7 @@ import './MentorCard.css';
 
 const MentorCard = ({ mentorList }) => {
   const history = useHistory().location.pathname;
+  const [remaining, setRemaining] = useState();
   return (
     <>
       <div className='cocktails-center'>
@@ -98,12 +99,23 @@ const MentorCard = ({ mentorList }) => {
                   </div>
                 </article>{' '}
                 {history === '/progress' ? (
-                  <ProgressBar
-                    className={
-                      product.name === 'Fedor' ? 'progressFedor' : 'progress'
-                    }
-                    completed={product.name === 'Fedor' ? 30 : 0}
-                  />
+                  <>
+                    <h4
+                      style={{
+                        fontFamily: 'Macan',
+                      }}
+                    >
+                      {product.name === 'Fedor'
+                        ? '7 days remaining'
+                        : '10 days remaining'}
+                    </h4>
+                    <ProgressBar
+                      className={
+                        product.name === 'Fedor' ? 'progressFedor' : 'progress'
+                      }
+                      completed={product.name === 'Fedor' ? 30 : 0}
+                    />
+                  </>
                 ) : null}
               </div>
             );
