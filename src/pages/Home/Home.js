@@ -1,9 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import Section2 from './Section2';
 import Section3 from './Section3';
+import images from '../../utils/homeImages';
 
 // Import accordion components
 import {
@@ -12,11 +12,10 @@ import {
   AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
-  AccordionItemState,
 } from 'react-accessible-accordion';
 
 // import Swiper core and required modules
-import SwiperCore, { Navigation, A11y, EffectFade, Autoplay } from 'swiper';
+import SwiperCore, { A11y, EffectFade, Autoplay } from 'swiper';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -24,8 +23,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/swiper-bundle.css';
 
-import images from '../../utils/homeImages';
-SwiperCore.use([Navigation, A11y, EffectFade, Autoplay]);
+SwiperCore.use([ A11y, EffectFade, Autoplay]);
 
 const items = [
   {
@@ -81,9 +79,9 @@ const items = [
 export default function Home() {
   return (
     <div>
-      <div className='info'>
-        <div className='content'>
-          <div className='head'>
+      <div className="info">
+        <div className="content">
+          <div className="head">
             <h1>
               Find the perfect <span style={{ color: '#00732e' }}>mentor</span>{' '}
               for your freelance growth
@@ -92,25 +90,24 @@ export default function Home() {
               Fiverr Senpai - grow your business with expert know-how and
               support from pillars of the community
             </div>
-
-            <Link to='/products'>
+            <Link to="/products">
               <button>Get Started</button>
             </Link>
           </div>
-          <div className='concept'>
-            <Accordion className='accordion' allowZeroExpanded>
+          <div className="concept">
+            <Accordion className="accordion" allowZeroExpanded>
               {items.map((item) => (
                 <AccordionItem
-                  activeClassName='accordion__active'
-                  className='accordion__item'
+                  activeClassName="accordion__active"
+                  className="accordion__item"
                   key={item.uuid}
                 >
                   <AccordionItemHeading>
-                    <AccordionItemButton className='accordion__button'>
+                    <AccordionItemButton className="accordion__button">
                       {item.heading}
                     </AccordionItemButton>
                   </AccordionItemHeading>
-                  <AccordionItemPanel className='accordion__panel'>
+                  <AccordionItemPanel className="accordion__panel">
                     {item.content}
                   </AccordionItemPanel>
                 </AccordionItem>
@@ -118,54 +115,36 @@ export default function Home() {
             </Accordion>
           </div>
         </div>
-
         <Swiper
-          effect='fade'
+          effect="fade"
           autoplay
           loop
           fadeEffect={{ crossFade: true }}
           speed={700}
           slidesPerView={1}
-          // navigation
         >
           {images.map((image) => (
-            <SwiperSlide key={image.id}>
+            <SwiperSlide key={image.url}>
               <img
-                className='swiper__image'
+                className="swiper__image"
                 src={image.url}
                 alt={image.desc}
-                key={image.id}
               />
               {image.desc ? (
-                <div className='swiper__text' key={image.id}>
-                  {' '}
-                  <div
-                    style={{ position: 'relative' }}
-                    className='swiptext'
-                    key={image.id}
-                  >
+                <div className="swiper__text">
+                  <div style={{ position: 'relative' }} className="swiptext">
                     {image.desc}
                   </div>
                 </div>
               ) : image.desc2 ? (
-                <div className='swiper__text2' key={image.id}>
-                  {' '}
-                  <div
-                    style={{ position: 'relative' }}
-                    className='swiptext'
-                    key={image.id}
-                  >
+                <div className="swiper__text2">
+                  <div style={{ position: 'relative' }} className="swiptext">
                     {image.desc2}
                   </div>
                 </div>
               ) : image.desc3 ? (
-                <div className='swiper__text3' key={image.id}>
-                  {' '}
-                  <div
-                    style={{ position: 'relative' }}
-                    className='swiptext'
-                    key={image.id}
-                  >
+                <div className="swiper__text3">
+                  <div style={{ position: 'relative' }} className="swiptext">
                     {image.desc3}
                   </div>
                 </div>
