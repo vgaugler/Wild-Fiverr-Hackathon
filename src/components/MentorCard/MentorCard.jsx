@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import ProgressBar from '@ramonak/react-progress-bar';
 
@@ -13,7 +13,7 @@ const MentorCard = ({ mentorList }) => {
           mentorList.map((product, i) => {
             const { id, image, name, activity, language, skill } = product;
             return (
-              <div>
+              <div key={id}>
                 <article
                   key={id}
                   className='cocktail'
@@ -81,7 +81,7 @@ const MentorCard = ({ mentorList }) => {
                     </div>
                     <Link
                       to={
-                        history === '/products'
+                        history === '/products' || history === '/productmusic'
                           ? `/products/${id}/${name}`
                           : {
                               pathname: `/progress/${id}/${name}`,

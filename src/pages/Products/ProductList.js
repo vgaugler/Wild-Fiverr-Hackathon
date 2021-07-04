@@ -1,12 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import firebase from '../../utils/firebaseConfig';
 import MentorCard from '../../components/MentorCard/MentorCard';
 import './ProductList.css';
 import { mentorContext } from '../../context/MentorContext';
 const ProductList = () => {
   const { mentorList, setMentorList } = useContext(mentorContext);
-  console.log(mentorList);
 
   const [search, setSearch] = useState('');
   const [filtredMentor, setFiltredMentor] = useState([]);
@@ -26,8 +25,6 @@ const ProductList = () => {
       }
       setMentorList(list);
       setFiltredMentor(list);
-      console.log(mentorList);
-      console.log(filtredMentor);
     });
   }, []);
 
@@ -35,7 +32,7 @@ const ProductList = () => {
     let temp = mentorList.filter(
       (el) => search && el.activity.toLowerCase().includes(search)
     );
-    console.log(temp);
+
     setFiltredMentor(temp);
     if (!temp.length) {
       setFiltredMentor(mentorList);
@@ -85,7 +82,7 @@ const ProductList = () => {
                   onChange={(event) => handleChange(event)}
                   value={search}
                   style={{ outline: 'none' }}
-                  autocomplete='off'
+                  autoComplete='off'
                 />
               </label>
             </form>

@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useParams } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import Chat from '../../components/Chat/Chat';
@@ -5,12 +7,10 @@ import { UserContext } from '../../context/UserProvider';
 import firebase from '../../utils/firebaseConfig';
 import './ProgressDetail.css';
 import Ban from '../../images/edd.png';
-import { width } from 'dom7';
 
 const ProgressionDetails = () => {
   const { id } = useParams();
   const { name } = useParams();
-  console.log(id);
   const { isSignedIn } = useContext(UserContext);
   const [product, setProduct] = useState({});
   const [language, setLanguage] = useState([]);
@@ -47,30 +47,30 @@ const ProgressionDetails = () => {
       });
     }
   }, []);
-  function choose() {
-    let count = availabel - 1;
-    setAvailabel(count);
-    const mentor = {
-      name: namo,
-      id: `${id}`,
-      skill: skills,
-      language: language,
-    };
+  // function choose() {
+  //   let count = availabel - 1;
+  //   setAvailabel(count);
+  //   const mentor = {
+  //     name: namo,
+  //     id: `${id}`,
+  //     skill: skills,
+  //     language: language,
+  //   };
 
-    firebase
-      .database()
-      .ref('mentor')
-      .child(firebase.auth().currentUser.uid)
-      .child(`${id}`)
-      .set(mentor);
-  }
+  //   firebase
+  //     .database()
+  //     .ref('mentor')
+  //     .child(firebase.auth().currentUser.uid)
+  //     .child(`${id}`)
+  //     .set(mentor);
+  // }
   return (
     <div style={{ marginTop: '80px' }}>
       <div className='boxHead'>
         <h1 style={{ textAlign: 'end', margin: '60px', fontSize: '3rem' }}>
           Just Chatting
         </h1>
-        <img src={Ban} style={{ width: '500px', height: 'auto' }}></img>
+        <img src={Ban} style={{ width: '500px', height: 'auto' }} alt=''></img>
       </div>
       <div
         key={product.id}

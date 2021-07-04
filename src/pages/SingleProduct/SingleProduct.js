@@ -1,10 +1,11 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect, useContext } from 'react';
 import firebase from '../../utils/firebaseConfig';
 import './SingleProduct.css';
 import { UserContext } from '../../context/UserProvider';
-
+import { useAlert } from 'react-alert';
 const SingleProduct = (props) => {
   const { isSignedIn } = useContext(UserContext);
   const [product, setProduct] = useState({});
@@ -17,6 +18,7 @@ const SingleProduct = (props) => {
   const [value, setValue] = useState();
   const [ids, setIds] = useState();
   const [image, setImage] = useState();
+  const alert = useAlert();
 
   useEffect(() => {
     const mentor = firebase.database().ref('user').child(`${id}`);
@@ -96,16 +98,16 @@ const SingleProduct = (props) => {
       >
         <img className='prod-photo' src={product.image} alt={product.name} />
         <section className='content-prod'>
-          <div class='title_name'>
+          <div className='title_name'>
             <h2>{product.name}</h2>
 
             <h5>@{product.nationality}</h5>
           </div>
-          <span class='fa fa-star review'></span>
-          <span class='fa fa-star review'></span>
-          <span class='fa fa-star review'></span>
-          <span class='fa fa-star review'></span>
-          <span class='fa fa-star-half-o review'></span>
+          <span className='fa fa-star review'></span>
+          <span className='fa fa-star review'></span>
+          <span className='fa fa-star review'></span>
+          <span className='fa fa-star review'></span>
+          <span className='fa fa-star-half-o review'></span>
           <p>60 Reviews</p>
           <h5 className='price-prod' style={{ marginBottom: '40px' }}>
             {product.activity}
@@ -119,6 +121,7 @@ const SingleProduct = (props) => {
           >
             {language.map((el) => (
               <p
+                key={el}
                 className='tag'
                 style={{
                   backgroundColor: 'var(--primaryColor)',
@@ -143,6 +146,7 @@ const SingleProduct = (props) => {
           >
             {skills.map((el) => (
               <span
+                key={el}
                 style={{
                   border: '1px solid rgba(119, 119, 119, 0.65)',
                   color: 'var(--primaryDarkColor)',
@@ -198,8 +202,25 @@ const SingleProduct = (props) => {
             <button type='button' className='btnAlready' disabled={true}>
               Already in your program
             </button>
+          ) : isSignedIn === false ? (
+            <button
+              type='button'
+              className='btnChoose'
+              onClick={() =>
+                alert.show(
+                  'You must be logged in to add a mentor in your program'
+                )
+              }
+            >
+              Choose this mentor
+            </button>
           ) : (
-            <button type='button' className='btnChoose' onClick={choose}>
+            <button
+              type='button'
+              className='btnChoose'
+              onClick={choose}
+              disabled={isSignedIn ? false : true}
+            >
               Choose this mentor
             </button>
           )}

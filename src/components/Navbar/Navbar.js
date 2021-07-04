@@ -1,6 +1,6 @@
 /* eslint-disable eqeqeq */
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Navbar.css';
 import Logo from '../../images/fiversenpai.png';
 import { BoxLogContext } from '../../context/LogProvider';
@@ -9,6 +9,7 @@ import { BlurContext } from '../../context/BlurProvider';
 import SignUp from '../Login/SignUp';
 import { NameContext } from '../../context/NameProvider';
 import firebase from '../../utils/firebaseConfig';
+import { useAlert } from 'react-alert';
 
 export default function Navbar({ visible }) {
   const { updateLoginStatus } = useContext(BoxLogContext);
@@ -17,6 +18,8 @@ export default function Navbar({ visible }) {
   const { name } = useContext(NameContext);
   const [value, setValue] = useState();
   const [role, setRole] = useState();
+  const alert = useAlert();
+  let history = useHistory();
 
   useEffect(() => {
     if (isSignedIn) {
@@ -45,7 +48,7 @@ export default function Navbar({ visible }) {
         .child(firebase.auth().currentUser.uid);
       comment.on('value', (snapshot) => {
         let previousList = snapshot.val();
-        console.log(previousList);
+
         setRole(previousList);
       });
     }
@@ -54,7 +57,34 @@ export default function Navbar({ visible }) {
     <div className={blurStatus ? 'nav blur' : 'nav'}>
       <div className={visible ? 'nav-container-fixed' : 'nav-container'}>
         <img src={Logo} alt='' style={{ width: '250px', height: 'auto' }}></img>
-        {role && role.role === 'Newbie' ? (
+        {isSignedIn === false ? (
+          <ul className='links'>
+            <Link to='/'>
+              <li>Home</li>
+            </Link>
+
+            <Link to='/products'>
+              <li>Mentors</li>
+            </Link>
+            <Link
+              to='/'
+              onClick={() =>
+                alert.show('You must be logged in to see your program')
+              }
+            >
+              <li>My Learning</li>
+            </Link>
+          </ul>
+        ) : role && role.role === 'Expert' ? (
+          <ul className='links'>
+            <Link to='/'>
+              <li>Home</li>
+            </Link>
+            <Link to='/coaching'>
+              <li>My newbies</li>
+            </Link>{' '}
+          </ul>
+        ) : (
           <ul className='links'>
             <Link to='/'>
               <li>Home</li>
@@ -66,15 +96,6 @@ export default function Navbar({ visible }) {
             <Link to='/progress'>
               <li>My Learning</li>
             </Link>
-          </ul>
-        ) : (
-          <ul className='links'>
-            <Link to='/'>
-              <li>Home</li>
-            </Link>
-            <Link to='/coaching'>
-              <li>My newbies</li>
-            </Link>{' '}
           </ul>
         )}
 
@@ -90,7 +111,7 @@ export default function Navbar({ visible }) {
             </h4>
           ) : (
             <div>
-              <p
+              <div
                 className='connect'
                 style={{
                   marginBottom: '0',
@@ -114,7 +135,7 @@ export default function Navbar({ visible }) {
                   Sign up
                 </div>{' '}
                 or
-              </p>
+              </div>
             </div>
           )}
           {isSignedIn ? (
@@ -123,6 +144,7 @@ export default function Navbar({ visible }) {
               style={{ marginRight: '10px' }}
               onClick={() => {
                 firebase.auth().signOut();
+                history.push('/');
               }}
             >
               Log out
@@ -139,7 +161,7 @@ export default function Navbar({ visible }) {
               Log in
             </button>
           )}
-          <Link to='/cart'>
+          <Link to={isSignedIn ? '/progress' : '/'}>
             <i className='fa fa-graduation-cap fa-2x cart-icon'></i>{' '}
           </Link>
           <div className='nav-item'>
