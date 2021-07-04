@@ -67,8 +67,8 @@ a {
   z-index: 1000;
 }
 
-.links a:hover {
-  border-color: var(--primaryColor);
+.links .main-nav:hover {
+  border-color: var(--pinkMediumColor);
 }
 .links a {
   border-bottom: 2px solid transparent;
@@ -153,6 +153,11 @@ nav svg {
 }
 .signup:hover {
   color: var(--primaryColor);
+}
+.main-nav-active li {
+  color: var(--pinkMediumColor);
+  border-left: 2px solid transparent;
+  border-color: var(--pinkMediumColor);
 }
 @media (min-width: 767px) {
   .nav-container {

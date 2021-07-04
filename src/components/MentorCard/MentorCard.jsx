@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import ProgressBar from '@ramonak/react-progress-bar';
-
 import './MentorCard.css';
+import DeleteMentor from './DeleteMentor';
 
 const MentorCard = ({ mentorList }) => {
   const history = useHistory().location.pathname;
+
   return (
     <>
       <div className='cocktails-center'>
@@ -21,6 +22,9 @@ const MentorCard = ({ mentorList }) => {
                 >
                   <div className='img-container'>
                     <img src={image} alt={name} />
+                    {history === '/progress' ? (
+                      <DeleteMentor product={product} />
+                    ) : null}
                   </div>
                   <div className='cocktail-footer'>
                     <div className='product'>
@@ -38,6 +42,7 @@ const MentorCard = ({ mentorList }) => {
                     >
                       {language.map((m) => (
                         <div
+                          key={m.id}
                           className='tag'
                           style={{
                             backgroundColor: '#1dbf7361',
@@ -63,6 +68,7 @@ const MentorCard = ({ mentorList }) => {
                     >
                       {skill.map((m) => (
                         <div
+                          key={m.id}
                           className='tag2'
                           style={{
                             border: '1px solid hsla(0, 0%, 46.7%, 0.65)',
@@ -98,12 +104,23 @@ const MentorCard = ({ mentorList }) => {
                   </div>
                 </article>{' '}
                 {history === '/progress' ? (
-                  <ProgressBar
-                    className={
-                      product.name === 'Fedor' ? 'progressFedor' : 'progress'
-                    }
-                    completed={product.name === 'Fedor' ? 30 : 0}
-                  />
+                  <>
+                    <h4
+                      style={{
+                        fontFamily: 'Macan',
+                      }}
+                    >
+                      {product.name === 'Fedor'
+                        ? '7 days remaining'
+                        : '10 days remaining'}
+                    </h4>
+                    <ProgressBar
+                      className={
+                        product.name === 'Fedor' ? 'progressFedor' : 'progress'
+                      }
+                      completed={product.name === 'Fedor' ? 30 : 0}
+                    />
+                  </>
                 ) : null}
               </div>
             );

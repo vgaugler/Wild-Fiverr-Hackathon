@@ -129,8 +129,9 @@ function Chat({ id, name }) {
       {isSignedIn ? (
         <div style={{ marginRight: '73px' }}>
           {allComment
-            ? allComment.map((m) => (
+            ? allComment.map((m, index) => (
                 <div
+                  key={index}
                   className={
                     m.id === firebase.auth().currentUser.uid
                       ? 'boxGreen'

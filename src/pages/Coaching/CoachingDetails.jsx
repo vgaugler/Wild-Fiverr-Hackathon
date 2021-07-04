@@ -51,7 +51,7 @@ function CoachingDetails() {
           alt='user'
           style={{ width: '50%', objectFit: 'cover' }}
         />{' '}
-        <ChatMentor id={id} />
+        <ChatMentor id={id} key={id} />
       </div>
     </div>
   );

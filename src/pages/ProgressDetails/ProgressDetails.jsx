@@ -94,7 +94,7 @@ const ProgressionDetails = () => {
           alt={product.name}
           style={{ width: '50%', objectFit: 'cover' }}
         />{' '}
-        <Chat id={id} name={name} />
+        <Chat id={id} name={name} key={id} />
       </div>
     </div>
   );
