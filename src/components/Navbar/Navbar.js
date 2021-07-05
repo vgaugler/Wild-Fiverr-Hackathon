@@ -1,6 +1,6 @@
 /* eslint-disable eqeqeq */
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useHistory, NavLink, Redirect } from 'react-router-dom';
+import { Link, useHistory, NavLink } from 'react-router-dom';
 import './Navbar.css';
 import Logo from '../../images/fiversenpai.png';
 import { BoxLogContext } from '../../context/LogProvider';
@@ -18,7 +18,7 @@ export default function Navbar({ visible }) {
   const { name } = useContext(NameContext);
   const [value, setValue] = useState();
   const [role, setRole] = useState();
-  const [signIn, setSignIn] = useState(false)
+  const [signIn, setSignIn] = useState(false);
   const alert = useAlert();
   let history = useHistory();
 
@@ -49,7 +49,6 @@ export default function Navbar({ visible }) {
         .child(firebase.auth().currentUser.uid);
       comment.on('value', (snapshot) => {
         let previousList = snapshot.val();
-
         setRole(previousList);
       });
     }
@@ -57,30 +56,30 @@ export default function Navbar({ visible }) {
   return (
     <div className={blurStatus ? 'nav blur' : 'nav'}>
       <div className={visible ? 'nav-container-fixed' : 'nav-container'}>
-        <img src={Logo} alt='' style={{ width: '250px', height: 'auto' }}></img>
+        <img src={Logo} alt="" style={{ width: '250px', height: 'auto' }}></img>
         {isSignedIn === false ? (
-          <ul className='links'>
+          <ul className="links">
             <NavLink
-              to='/'
-              className='main-nav'
-              activeClassName='main-nav-active'
+              to="/"
+              className="main-nav"
+              activeClassName="main-nav-active"
               exact={true}
             >
               <li>Home</li>
             </NavLink>
 
             <NavLink
-              to='/products'
-              className='main-nav'
-              activeClassName='main-nav-active'
+              to="/products"
+              className="main-nav"
+              activeClassName="main-nav-active"
               exact={true}
             >
               <li>Mentors</li>
             </NavLink>
             <NavLink
-              to='/home'
-              className='main-nav'
-              activeClassName='main-nav-active'
+              to="/home"
+              className="main-nav"
+              activeClassName="main-nav-active"
               exact={true}
               onClick={() =>
                 alert.show('You must be logged in to see your program')
@@ -90,47 +89,47 @@ export default function Navbar({ visible }) {
             </NavLink>
           </ul>
         ) : role && role.role === 'Expert' ? (
-          <ul className='links'>
+          <ul className="links">
             <NavLink
-              to='/'
-              className='main-nav'
-              activeClassName='main-nav-active'
+              to="/"
+              className="main-nav"
+              activeClassName="main-nav-active"
               exact={true}
             >
               <li>Home</li>
             </NavLink>
             <NavLink
-              to='/coaching'
-              className='main-nav'
-              activeClassName='main-nav-active'
+              to="/coaching"
+              className="main-nav"
+              activeClassName="main-nav-active"
               exact={true}
             >
               <li>My newbies</li>
             </NavLink>
           </ul>
         ) : (
-          <ul className='links'>
+          <ul className="links">
             <NavLink
-              to='/'
-              className='main-nav'
-              activeClassName='main-nav-active'
+              to="/"
+              className="main-nav"
+              activeClassName="main-nav-active"
               exact={true}
             >
               <li>Home</li>
             </NavLink>
 
             <NavLink
-              to='/products'
-              className='main-nav'
-              activeClassName='main-nav-active'
+              to="/products"
+              className="main-nav"
+              activeClassName="main-nav-active"
               exact={true}
             >
               <li>Mentors</li>
             </NavLink>
             <NavLink
-              to='/progress'
-              className='main-nav'
-              activeClassName='main-nav-active'
+              to="/progress"
+              className="main-nav"
+              activeClassName="main-nav-active"
               exact={true}
             >
               <li>My Learning</li>
@@ -138,11 +137,11 @@ export default function Navbar({ visible }) {
           </ul>
         )}
 
-        <SignUp signIn={signIn} setSignIn={setSignIn}/>
-        <div className='user'>
+        <SignUp signIn={signIn} setSignIn={setSignIn} />
+        <div className="user">
           {isSignedIn ? (
             <h4
-              className='pseudoTitle'
+              className="pseudoTitle"
               style={{ marginRight: '10px', marginBottom: '0' }}
             >
               {name}
@@ -150,7 +149,7 @@ export default function Navbar({ visible }) {
           ) : (
             <div>
               <div
-                className='connect'
+                className="connect"
                 style={{
                   marginBottom: '0',
                   marginRight: '5px',
@@ -159,7 +158,7 @@ export default function Navbar({ visible }) {
               >
                 First Connection ?
                 <div
-                  className='signup'
+                  className="signup"
                   style={{
                     cursor: 'pointer',
                     marginLeft: '15px',
@@ -178,7 +177,7 @@ export default function Navbar({ visible }) {
           )}
           {isSignedIn ? (
             <button
-              className='login'
+              className="login"
               style={{ marginRight: '10px' }}
               onClick={() => {
                 firebase.auth().signOut();
@@ -189,23 +188,23 @@ export default function Navbar({ visible }) {
             </button>
           ) : (
             <button
-              className='login'
+              className="login"
               style={{ cursor: 'pointer', marginRight: '10px' }}
               onClick={() => {
                 updateLoginStatus(true);
                 updateBlurStatus(true);
-                setSignIn(true)
+                setSignIn(true);
               }}
             >
               Log in
             </button>
           )}
           <Link to={isSignedIn ? '/progress' : '/'}>
-            <i className='fa fa-graduation-cap fa-2x cart-icon'></i>
+            <i className="fa fa-graduation-cap fa-2x cart-icon"></i>
           </Link>
-          <div className='nav-item'>
-            <div className='amount-container'>
-              <p className='total-amount'>{isSignedIn ? value.length : '0'}</p>
+          <div className="nav-item">
+            <div className="amount-container">
+              <p className="total-amount">{isSignedIn ? value.length : '0'}</p>
             </div>
           </div>
         </div>

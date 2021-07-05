@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable eqeqeq */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { UserContext } from '../../context/UserProvider';
 import firebase from '../../utils/firebaseConfig';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -15,7 +15,7 @@ function Chat({ id, name }) {
   const [role, setRole] = useState();
   //mentor comment
   const [commentMentor, setCommentMentor] = useState();
-
+  const isMounted = useRef(false);
   const [allComment, setAllComment] = useState([]);
   const maxLength = 150;
   const myChangeHandlerCommentary = (event) => {
@@ -29,19 +29,19 @@ function Chat({ id, name }) {
         .ref('message')
         .child(firebase.auth().currentUser.uid)
         .child(name);
-
       comment.on('value', (snapshot) => {
         let previousList = snapshot.val();
-
         let list = [];
         for (let id in previousList) {
           list.push({ id, ...previousList[id] });
         }
-
         setComment(list);
       });
     }
+    isMounted.current = true;
+    return () => (isMounted.current = false);
   }, []);
+
   useEffect(() => {
     if (isSignedIn) {
       const comment = firebase
@@ -49,18 +49,17 @@ function Chat({ id, name }) {
         .ref('message')
         .child(name)
         .child(firebase.auth().currentUser.uid);
-
       comment.on('value', (snapshot) => {
         let previousList = snapshot.val();
-
         let list = [];
         for (let id in previousList) {
           list.push({ id, ...previousList[id] });
         }
-
         setCommentMentor(list);
       });
     }
+    isMounted.current = true;
+    return () => (isMounted.current = false);
   }, []);
 
   useEffect(() => {
@@ -71,7 +70,6 @@ function Chat({ id, name }) {
         .child(firebase.auth().currentUser.uid);
       comment.on('value', (snapshot) => {
         let previousList = snapshot.val();
-
         setRole(previousList);
       });
     }
@@ -80,7 +78,7 @@ function Chat({ id, name }) {
   useEffect(() => {
     const temp = comment && commentMentor ? [...comment, ...commentMentor] : [];
     const temp2 = temp.sort((a, b) =>
-      a.timeStamp < b.timeStamp ? -1 : a.timeStamp > b.timeStamp ? 1 : 0
+      a.timeStamp < b.timeStamp ? -1 : a.timeStamp > b.timeStamp ? 1 : 0,
     );
     setAllComment(temp2);
   }, [comment, commentMentor]);
@@ -118,7 +116,7 @@ function Chat({ id, name }) {
 
   return (
     <Scrollbars
-      className='boxComment'
+      className="boxComment"
       style={{
         width: '50%',
         height: '100vh',
@@ -165,10 +163,10 @@ function Chat({ id, name }) {
           }}
         >
           <input
-            type='text'
-            placeholder='votre commentaire'
+            type="text"
+            placeholder="votre commentaire"
             onChange={myChangeHandlerCommentary}
-            className='input-comment1'
+            className="input-comment1"
             value={commentary}
             maxLength={maxLength}
           />{' '}
@@ -178,8 +176,8 @@ function Chat({ id, name }) {
             </div>
           ) : null}
           <button
-            className='publishButton'
-            type='submit'
+            className="publishButton"
+            type="submit"
             // onClick={() => {
             //   isSignedIn
             //     ? handleSubmitCommentary()
