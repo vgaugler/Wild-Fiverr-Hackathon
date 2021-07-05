@@ -1,6 +1,6 @@
 /* eslint-disable eqeqeq */
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useHistory, NavLink } from 'react-router-dom';
+import { Link, useHistory, NavLink, Redirect } from 'react-router-dom';
 import './Navbar.css';
 import Logo from '../../images/fiversenpai.png';
 import { BoxLogContext } from '../../context/LogProvider';
@@ -18,6 +18,7 @@ export default function Navbar({ visible }) {
   const { name } = useContext(NameContext);
   const [value, setValue] = useState();
   const [role, setRole] = useState();
+  const [signIn, setSignIn] = useState(false)
   const alert = useAlert();
   let history = useHistory();
 
@@ -77,7 +78,7 @@ export default function Navbar({ visible }) {
               <li>Mentors</li>
             </NavLink>
             <NavLink
-              to='/'
+              to='/home'
               className='main-nav'
               activeClassName='main-nav-active'
               exact={true}
@@ -105,7 +106,7 @@ export default function Navbar({ visible }) {
               exact={true}
             >
               <li>My newbies</li>
-            </NavLink>{' '}
+            </NavLink>
           </ul>
         ) : (
           <ul className='links'>
@@ -137,9 +138,8 @@ export default function Navbar({ visible }) {
           </ul>
         )}
 
-        <SignUp />
+        <SignUp signIn={signIn} setSignIn={setSignIn}/>
         <div className='user'>
-          {' '}
           {isSignedIn ? (
             <h4
               className='pseudoTitle'
@@ -157,7 +157,7 @@ export default function Navbar({ visible }) {
                   display: 'inline-flex',
                 }}
               >
-                First Connection ?{' '}
+                First Connection ?
                 <div
                   className='signup'
                   style={{
@@ -171,7 +171,7 @@ export default function Navbar({ visible }) {
                   }}
                 >
                   Sign up
-                </div>{' '}
+                </div>
                 or
               </div>
             </div>
@@ -194,13 +194,14 @@ export default function Navbar({ visible }) {
               onClick={() => {
                 updateLoginStatus(true);
                 updateBlurStatus(true);
+                setSignIn(true)
               }}
             >
               Log in
             </button>
           )}
           <Link to={isSignedIn ? '/progress' : '/'}>
-            <i className='fa fa-graduation-cap fa-2x cart-icon'></i>{' '}
+            <i className='fa fa-graduation-cap fa-2x cart-icon'></i>
           </Link>
           <div className='nav-item'>
             <div className='amount-container'>

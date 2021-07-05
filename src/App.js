@@ -33,6 +33,7 @@ export default function App() {
         <MentorProvider>
           <Switch>
             <Route exact path='/' component={Homepage}></Route>
+            <Route exact path='/home' component={Homepage}></Route>
             <Route exact path='/products' component={Productlist}></Route>
             <Route exact path='/products/:id/:name' component={SingleProduct} />
             <Route exact path='/progress' component={Progress} />
