@@ -11,12 +11,11 @@ const MentorCard = ({ mentorList }) => {
     <>
       <div className='cocktails-center'>
         {mentorList &&
-          mentorList.map((product, i) => {
+          mentorList.map((product) => {
             const { id, image, name, activity, language, skill } = product;
             return (
               <div key={id}>
                 <article
-                  key={id}
                   className='cocktail'
                   style={{ position: 'relative' }}
                 >
@@ -40,9 +39,9 @@ const MentorCard = ({ mentorList }) => {
                         justifyContent: 'space-around',
                       }}
                     >
-                      {language.map((m) => (
+                      {language.map((m, i) => (
                         <div
-                          key={m.id}
+                          key={i}
                           className='tag'
                           style={{
                             backgroundColor: '#1dbf7361',
@@ -66,9 +65,9 @@ const MentorCard = ({ mentorList }) => {
                         justifyContent: 'center',
                       }}
                     >
-                      {skill.map((m) => (
+                      {skill.map((m, i) => (
                         <div
-                          key={m.id}
+                          key={i}
                           className='tag2'
                           style={{
                             border: '1px solid hsla(0, 0%, 46.7%, 0.65)',
@@ -102,7 +101,7 @@ const MentorCard = ({ mentorList }) => {
                       {history === '/progress' ? 'Chat now' : 'View'}
                     </Link>
                   </div>
-                </article>{' '}
+                </article>
                 {history === '/progress' ? (
                   <>
                     <h4

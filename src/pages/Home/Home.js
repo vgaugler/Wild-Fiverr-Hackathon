@@ -154,8 +154,8 @@ export default function Home() {
         </Swiper>
       </div>
       <div>
-        <Section2></Section2>
-        <Section3></Section3>
+        <Section2 />
+        <Section3 />
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ import { BlurContext } from '../../context/BlurProvider';
 import { BoxLogContext } from '../../context/LogProvider';
 import { useHistory } from 'react-router-dom';
 
-function SignUp() {
+function SignUp({signIn, setSignIn}) {
   const { isSignedIn, updateSignedIn } = useContext(UserContext);
   const { updateBlurStatus } = useContext(BlurContext);
   const { loginStatus, updateLoginStatus } = useContext(BoxLogContext);
@@ -25,7 +25,6 @@ function SignUp() {
     signInFlow: 'popup',
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
     ],
     callbacks: {
@@ -83,7 +82,7 @@ function SignUp() {
     <div className={loginStatus ? 'BoxLog Active' : 'BoxLog'}>
       {isSignedIn ? (
         <div>
-          <h2 className='titleBoxLog' style={{ marginBottom: '2.5rem' }}>
+          <h2 className="titleBoxLog" style={{ marginBottom: '2.5rem' }}>
             Hello {firebase.auth().currentUser.displayName}
           </h2>
           {value ? (
@@ -93,14 +92,12 @@ function SignUp() {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-
                   justifyContent: 'space-evenly',
                 }}
               >
-                {' '}
                 <button
-                  className='submit'
-                  type='submit'
+                  className="submit"
+                  type="submit"
                   style={{
                     width: '150px',
                   }}
@@ -117,7 +114,6 @@ function SignUp() {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-
                   justifyContent: 'space-evenly',
                 }}
               >
@@ -130,37 +126,37 @@ function SignUp() {
                   }}
                 >
                   <input
-                    type='radio'
-                    value='Newbie'
-                    name='role'
+                    type="radio"
+                    value="Newbie"
+                    name="role"
                     onClick={() => setRole('Newbie')}
-                  />{' '}
+                  />
                   Newbie
                   <input
-                    type='radio'
-                    value='Expert'
-                    name='role'
+                    type="radio"
+                    value="Expert"
+                    name="role"
                     onClick={() => setRole('Expert')}
-                  />{' '}
+                  />
                   Expert
                 </div>
                 <button
-                  className='submit'
-                  type='submit'
+                  className="submit"
+                  type="submit"
                   style={{
                     width: '150px',
                   }}
                 >
                   {value ? 'Continuer' : 'Valider'}
                 </button>
-              </form>{' '}
+              </form>
             </div>
           )}
         </div>
       ) : (
         <div>
           <h4 style={{ fontSize: '2rem', marginBottom: '25px' }}>
-            {value ? 'Sign in with Fiverr ' : 'Sign Up with Fiverr'}
+            {signIn ? 'Sign in with Fiverr ' : 'Sign Up with Fiverr'}
           </h4>
           <StyledFirebaseAuth
             uiConfig={uiConfig}
@@ -169,15 +165,15 @@ function SignUp() {
         </div>
       )}
       <div>
-        {' '}
-        <img src={Logo} alt='' className='logoLog' />
+        <img src={Logo} alt="fiverr symbol" className="logoLog" />
       </div>
       <div
-        className='closeBoxLog'
+        className="closeBoxLog"
         style={{ cursor: 'pointer' }}
         onClick={() => {
           updateLoginStatus(false);
           updateBlurStatus(false);
+          setSignIn(false);
         }}
       >
         <CloseSvg />
