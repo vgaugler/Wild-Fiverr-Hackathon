@@ -6,7 +6,6 @@ import firebase from '../../utils/firebaseConfig';
 import { useAlert } from 'react-alert';
 
 function DeleteMentor({ product }) {
-  const [mentor, setMentor] = useState();
   const alert = useAlert();
 
   const deleteMentor = () => {
@@ -22,11 +21,10 @@ function DeleteMentor({ product }) {
       for (let id in previousList) {
         list.push({ id, ...previousList[id] });
       }
-      setMentor(list);
     });
     favoriteRef.remove();
     alert.show(
-      `you remove ${product.name} from your program. That's too bad !`
+      `you remove ${product.name} from your program. That's too bad !`,
     );
   };
 

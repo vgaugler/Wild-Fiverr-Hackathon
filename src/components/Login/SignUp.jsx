@@ -11,7 +11,7 @@ import { BlurContext } from '../../context/BlurProvider';
 import { BoxLogContext } from '../../context/LogProvider';
 import { useHistory } from 'react-router-dom';
 
-function SignUp({signIn, setSignIn}) {
+function SignUp({ signIn, setSignIn }) {
   const { isSignedIn, updateSignedIn } = useContext(UserContext);
   const { updateBlurStatus } = useContext(BlurContext);
   const { loginStatus, updateLoginStatus } = useContext(BoxLogContext);
@@ -47,6 +47,7 @@ function SignUp({signIn, setSignIn}) {
     e.preventDefault();
     updateBlurStatus(false);
     updateLoginStatus(false);
+    setSignIn(false);
     history.push('/');
   };
   useEffect(() => {
@@ -54,14 +55,13 @@ function SignUp({signIn, setSignIn}) {
       // !! ensure boolean
       updateSignedIn(!!user);
 
-      if (isSignedIn === true) {
+      if (isSignedIn) {
         const roleAssign = firebase
           .database()
           .ref('role')
           .child(firebase.auth().currentUser.uid);
         roleAssign.on('value', (snapshot) => {
           let previousList = snapshot.val();
-
           setValue(!!previousList);
         });
         firebase
@@ -76,7 +76,7 @@ function SignUp({signIn, setSignIn}) {
         updateName('unknown');
       }
     });
-  }, [name, role, value]);
+  }, [name, role, value, signIn]);
 
   return (
     <div className={loginStatus ? 'BoxLog Active' : 'BoxLog'}>
@@ -85,7 +85,7 @@ function SignUp({signIn, setSignIn}) {
           <h2 className="titleBoxLog" style={{ marginBottom: '2.5rem' }}>
             Hello {firebase.auth().currentUser.displayName}
           </h2>
-          {value ? (
+          {signIn ? (
             <div>
               <form
                 onSubmit={handleLogin}
