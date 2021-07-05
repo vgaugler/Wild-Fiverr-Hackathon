@@ -6,6 +6,7 @@ import { UserContext } from '../../context/UserProvider';
 import firebase from '../../utils/firebaseConfig';
 import { Scrollbars } from 'react-custom-scrollbars';
 import './Chat.css';
+import { useAlert } from 'react-alert';
 
 function Chat({ id, name }) {
   const { isSignedIn } = useContext(UserContext);
@@ -21,6 +22,7 @@ function Chat({ id, name }) {
   const myChangeHandlerCommentary = (event) => {
     setCommentary(event.target.value);
   };
+  const alert = useAlert();
 
   useEffect(() => {
     if (isSignedIn) {
@@ -103,14 +105,15 @@ function Chat({ id, name }) {
       name: firebase.auth().currentUser.displayName,
       timeStamp: date2,
     };
-    firebase
-      .database()
-      .ref('message')
-      .child(firebase.auth().currentUser.uid)
-      .child(name)
-      .child(date2)
-      .set(comment);
-
+    if (commentary)
+      firebase
+        .database()
+        .ref('message')
+        .child(firebase.auth().currentUser.uid)
+        .child(name)
+        .child(date2)
+        .set(comment);
+    else alert.show('You must type a message');
     setCommentary('');
   };
 
