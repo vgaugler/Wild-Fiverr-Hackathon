@@ -23,7 +23,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/swiper-bundle.css';
 
-SwiperCore.use([ A11y, EffectFade, Autoplay]);
+SwiperCore.use([A11y, EffectFade, Autoplay]);
 
 const items = [
   {
@@ -86,7 +86,7 @@ export default function Home() {
               Find the perfect <span style={{ color: '#00732e' }}>mentor</span>{' '}
               for your freelance growth
             </h1>
-            <div>
+            <div className="text-div-home">
               Fiverr Senpai - grow your business with expert know-how and
               support from pillars of the community
             </div>
@@ -125,11 +125,7 @@ export default function Home() {
         >
           {images.map((image) => (
             <SwiperSlide key={image.url}>
-              <img
-                className="swiper__image"
-                src={image.url}
-                alt={image.desc}
-              />
+              <img className="swiper__image" src={image.url} alt={image.desc} />
               {image.desc ? (
                 <div className="swiper__text">
                   <div style={{ position: 'relative' }} className="swiptext">
@@ -153,7 +149,7 @@ export default function Home() {
           ))}
         </Swiper>
       </div>
-      <div>
+      <div className="bottom-sections">
         <Section2 />
         <Section3 />
       </div>

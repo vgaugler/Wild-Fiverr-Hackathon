@@ -38,7 +38,6 @@ button:focus {
   color: #17252a;
 }
 .head {
-  max-width: 85%;
   letter-spacing: 0.1em;
   line-height: 2em;
   margin: 0;
@@ -51,7 +50,7 @@ button:focus {
   align-items: flex-end;
 }
 .concept {
-  width: 85%;
+  min-width: 450px;
   line-height: 2em;
   margin: 0;
   text-align: left;
@@ -72,6 +71,10 @@ button:focus {
   color: var(--primaryColor);
   background: transparent;
   border: 2px solid var(--primaryColor);
+}
+
+.bottom-sections {
+  padding-top: 60px;
 }
 
 .swiper-container {
@@ -246,5 +249,11 @@ div.swiper-button-prev,
 
   100% {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .text-div-home {
+    display: none;
   }
 }
