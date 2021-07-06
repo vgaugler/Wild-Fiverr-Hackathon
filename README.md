@@ -8,7 +8,7 @@ This project won the web development bracket over a 2 stage competition against 
 
 ### By team Saturday Night Fiverr:
 
-- (Victor Gaugler)[https://github.com/vgaugler], (Paul Bouhours)[https://github.com/PBouhours], Fabien Bataille, (Cédric La Barthe)[https://github.com/cedric-labarthe], (Thomas Allen)[https://github.com/teasmade]
+- [Victor Gaugler](https://github.com/vgaugler), [Paul Bouhours](https://github.com/PBouhours), Fabien Bataille, [Cédric La Barthe](https://github.com/cedric-labarthe), [Thomas Allen](https://github.com/teasmade)
 - JS Web Development Students
 - Wild Code School, Nantes Campus
 
