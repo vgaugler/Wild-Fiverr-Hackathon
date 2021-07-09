@@ -1,4 +1,4 @@
-# Fiverr Senapi
+# Fiverr Senpai
 
 [See the site in action here](https://fiverrsenpai.netlify.app/)
 ## A 2.5 Day Hackathon project
